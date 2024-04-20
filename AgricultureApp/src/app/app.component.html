@@ -1,4 +1,8 @@
 
-  <app-header/>
-  <app-home/>
-  <app-footer/>
+  <app-header [screenWidth]="getScreenWidth" />
+<div class="container-fluid">
+  <router-outlet ></router-outlet>
+</div>
+  <div class="footer me-2">
+    <app-footer [screenWidth]="getScreenWidth" />
+  </div>

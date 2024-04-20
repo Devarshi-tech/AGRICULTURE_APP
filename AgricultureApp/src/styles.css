@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.logo{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.searchInputBox{
+    width: 50% !important;
+    display: unset;
+}
+
+.footer{
+    /* margin: 0 1% 0 1% !important ; */
+    background-color: white;
+}

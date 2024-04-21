@@ -9,7 +9,27 @@
     display: unset;
 }
 
-.footer{
-    /* margin: 0 1% 0 1% !important ; */
+/* .footer{
     background-color: white;
+} */
+
+
+table ,.accordion-button{
+    font-size: 0.65em;
 }
+
+.routerOutletWebClass{
+    margin-top: 120px;
+}
+
+.routerOutletMobileClass{
+    margin-top: 80px;
+}
+
+.header{
+    background-color: aliceblue;
+    opacity: 0.9;
+}
+
+
+

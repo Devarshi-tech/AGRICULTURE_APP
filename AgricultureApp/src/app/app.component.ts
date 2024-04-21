@@ -16,23 +16,38 @@ export class AppComponent {
 
   public getScreenWidth: any;
   getScreenHeight: any;
+  isFooter: boolean = true;
+  isHeader: boolean = true;
 
   ngOnInit() {
     if (typeof window !== 'undefined') {
       // Access window here
       this.getScreenWidth = window.innerWidth;
       this.getScreenHeight = window.innerHeight;
+      if (this.getScreenWidth > 600) {
+        this.isDesktopView = true;
+      }
+      if(this.getScreenWidth<=600){
+        this.isDesktopView = false;
+      }
     }
 
   }
-
+  isDesktopView: boolean = true;
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     if (typeof window !== 'undefined') {
       // Access window here
       this.getScreenWidth = window.innerWidth;
       this.getScreenHeight = window.innerHeight;
+      if (this.getScreenWidth > 600) {
+        this.isDesktopView = true;
+      }
+      if(this.getScreenWidth<=600){
+        this.isDesktopView = false;
+      }
     }
   }
+
 
 }

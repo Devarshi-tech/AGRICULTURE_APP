@@ -1,0 +1,47 @@
+<!-- Header Starts -->
+@if (isHeader) {
+<nav class="navbar fixed-top header d-flex flex-row">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">
+            <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo">
+        </a>
+        <input class="form-control me-2 searchInputBox" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+
+
+    <!-- Web options starts -->
+    @if (screenWidth >=600) {
+
+    <div class="container-fluid">
+
+        <i class=" navbar-brand-for-blank-place"></i>
+
+        @for (item of menuItemsList; track $index) {
+        <i [class.navbar-brand]="true" [routerLink]="item.routerLink">
+            {{item.name}}</i>
+        }
+        <i class=" navbar-brand-for-blank-place"></i>
+    </div>
+    }
+    <!-- Web options starts -->
+
+</nav>
+}
+<!-- Header Ends -->
+
+<!-- Mobile Footer Starts -->
+@if (screenWidth<600 && isFooter) { <nav class="navbar fixed-bottom m-2 bg-body-tertiary">
+
+    <div class="container-fluid">
+
+        @for (item of menuItemsList; track $index) {
+        <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"></i>
+        }
+
+    </div>
+    </nav>
+    }
+    <!-- Mobile footer Ends -->

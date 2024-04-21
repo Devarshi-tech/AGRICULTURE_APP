@@ -1,8 +1,9 @@
+<app-header [screenWidth]="getScreenWidth" [isHeader]="isHeader" />
 
-  <app-header [screenWidth]="getScreenWidth" />
-<div class="container-fluid">
-  <router-outlet ></router-outlet>
+<div class="container-fluid" [class.routerOutletWebClass]="isDesktopView" [class.routerOutletMobileClass]="!isDesktopView">
+  <router-outlet></router-outlet>
 </div>
-  <div class="footer me-2">
-    <app-footer [screenWidth]="getScreenWidth" />
-  </div>
+
+<div class="footer">
+  <app-footer [screenWidth]="getScreenWidth" [isFooter]="isFooter" />
+</div>

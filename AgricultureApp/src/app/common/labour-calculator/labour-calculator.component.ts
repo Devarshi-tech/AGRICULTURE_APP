@@ -17,9 +17,10 @@ export class LaborCalculatorComponent {
 
   calculateTotalPayout() {
     if (this.perDayCost && this.totalDays) {
-      this.totalPayout = Math.max(this.perDayCost * this.totalDays - this.paymentMadeByFarmer, 0);
+      this.totalPayout = this.perDayCost * this.totalDays - this.paymentMadeByFarmer;
     } else {
       this.totalPayout = null;
     }
   }
+  
 }

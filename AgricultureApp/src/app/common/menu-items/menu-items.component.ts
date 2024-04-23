@@ -17,7 +17,7 @@ export class MenuItemsComponent {
   menuItemsList: any = [
     { name: "Home", iconsClassList: ["fas fa-home navbar-brand"], routerLink: "/home" },
     { name: "Bhaav", iconsClassList: ["fas fa-indian-rupee navbar-brand"], routerLink: "/mandibhaav" },
-    { name: "Profile", iconsClassList: ["fas fa-user navbar-brand"], routerLink: "/home" },
+    { name: "Calculator", iconsClassList: ["fa-solid fa-calculator"], routerLink: "/labourCalculator" },
     { name: "Photos", iconsClassList: ["fas fa-camera navbar-brand"], routerLink: "/home" },
     { name: "Settings", iconsClassList: ["fas fa-share navbar-brand"], routerLink: "/settings" },
     // { name: "Settings", iconsClassList: ["fas fa-share navbar-brand"], routerLink: "/settings" }

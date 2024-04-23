@@ -1,5 +1,6 @@
 .navbar-brand{
     margin-right: 0 !important;
+    cursor: pointer;
 }
 
 .navbar-brand-for-blank-place{

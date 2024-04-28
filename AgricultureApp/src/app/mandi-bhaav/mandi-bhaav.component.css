@@ -1,0 +1,99 @@
+:host::ng-deep input.p-inputtext {
+    width: 120% !important;
+    height: 35px;
+    border-right: 1px solid white;
+}
+
+:host::ng-deep .p-datepicker table {
+    margin: 0;
+}
+
+:host::ng-deep .p-datepicker table td,.p-datepicker {
+    padding: 0rem;
+}
+
+:host::ng-deep .p-datepicker .p-datepicker-header{
+    padding: unset;
+}
+
+:host::ng-deep .p-float-label span div{
+    left: -80% !important;
+}
+
+/* Apply styles only when the viewport width is 600 pixels or less */
+@media screen and (max-width: 360px) {
+    :host::ng-deep .p-float-label span div{
+        left: -110% !important;
+    }
+    :host::ng-deep .p-float-label p-calendar[inputid="date-to-label"] span div{
+        left: -200% !important;
+    }
+  }
+  
+  /* Apply styles only when the viewport width is between 600px and 900px */
+  @media screen and (min-width: 361px) and (max-width: 450px) {
+    :host::ng-deep .p-float-label span div{
+        left: -65% !important;
+    }
+    :host::ng-deep .p-float-label p-calendar[inputid="date-to-label"] span div{
+        left: -185% !important;
+    }
+  }
+  
+  /* Apply styles only when the viewport width is at least 1200px */
+  @media screen and (min-width: 451px) {
+    :host::ng-deep .p-float-label span div{
+        left: -30% !important;
+    }
+    :host::ng-deep .p-float-label p-calendar[inputid="date-to-label"] span div{
+        left: -120% !important;
+    }
+    
+  }
+  /* @media screen and (min-width:600px) {
+    
+    
+  } */
+
+/* :host::ng-deep .p-datepicker.p-datepicker-header{
+    padding: 0rem;
+} */
+
+span[class="p-float-label"] label {
+    font-size: 0.7em;
+    align-items: start !important;
+}
+
+:host::ng-deep button {
+    border-bottom-right-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+
+}
+
+:host::ng-deep .p-button.p-button-icon-only {
+    height: 35px !important;
+    width: 30px;
+}
+
+:host::ng-deep .p-button {
+    color: black;
+    border-top: 1px solid #d1d5db;
+    border-right: 1px solid #d1d5db;
+    border-bottom: 1px solid #d1d5db;
+    border-left: 1px solid white;
+    background-color: transparent;
+
+}
+
+:host::ng-deep ul {
+    padding-left: 0rem;
+}
+
+:host::ng-deep .p-component {
+    font-size: 0.75rem;
+    /* width: 100%; */
+}
+
+:host::ng-deep .p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item {
+    padding: 0.5rem 0.5rem;
+}

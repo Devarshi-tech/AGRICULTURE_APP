@@ -1,52 +1,148 @@
+<h2>Mandi Bhaav</h2>
+<div class="grid ">
+    <!-- Commodity Starts -->
+    <div class="col-4 mt-4">
+        <span class=" p-float-label">
+            <p-autoComplete dropdown="true" forceSelection="true" [(ngModel)]="MandiBhaavObject.selectedCommodity"
+                field="name" [suggestions]="commoditiesSuggetions" (completeMethod)="filterCommodity($event)"
+                inputId="Commodity"></p-autoComplete>
+            <label for="Commodity">Commodity</label>
+        </span>
+    </div>
+    <!-- Commoditiy Ends -->
+
+    <!-- State Starts -->
+    <div class="col-4 mt-4">
+        <span class=" p-float-label">
+            <p-autoComplete dropdown="true" [(ngModel)]="MandiBhaavObject.selectedState"
+                [suggestions]="stateSuggestions" field="name" (completeMethod)="filterStates($event)"
+                inputId="state"></p-autoComplete>
+            <label for="state">State</label>
+        </span>
+    </div>
+    <!-- State Ends -->
+
+    <!-- District Starts -->
+    <div class="col-4 mt-4">
+        <span class=" p-float-label">
+            <p-autoComplete (onSelect)="onSelectDistrict()" dropdown="true"
+                [(ngModel)]="MandiBhaavObject.selectedDistrict" field="name" [suggestions]="districtsSuggestions"
+                (completeMethod)="filterDistricts($event,MandiBhaavObject.selectedState)"
+                inputId="float-label"></p-autoComplete>
+            <label for="float-label">District</label>
+        </span>
+    </div>
+    <!-- Districts Ends -->
+
+    <!-- Market Starts -->
+    <div class="col-4 mt-4">
+
+        <span class=" p-float-label">
+            <p-autoComplete field="name" dropdown="true" [(ngModel)]="MandiBhaavObject.selectedMarket"
+                [suggestions]="marketsSuggestions" (completeMethod)="filterMarkets($event)"
+                inputId="float-label"></p-autoComplete>
+            <label for="float-label">Market</label>
+        </span>
+
+    </div>
+    <!-- Market Ends -->
+
+    <!-- From Date Starts -->
+    <div class="col-4 mt-4">
+        <span class=" p-float-label">
+            <!-- <p-autoComplete dropdown="true" [(ngModel)]="MandiBhaavObject.selectedFromDate" [suggestions]="suggestions" (completeMethod)="search($event)" inputId="float-label"></p-autoComplete> -->
+            <p-calendar inputId="date-from-label" [(ngModel)]="MandiBhaavObject.selectedFromDate"
+                [iconDisplay]="'input'" dateFormat="dd/M/yy">
+            </p-calendar>
+
+            <!-- <p-calendar [(ngModel)]="MandiBhaavObject.selectedFromDate" [inline]="true"></p-calendar> -->
+            <label for="date-from-label">From Date</label>
+        </span>
+    </div>
+    <!-- Form Date Ends -->
+
+    <!-- To Date Starts -->
+    <div class="col-4 mt-4">
+        <span class=" p-float-label">
+            <!-- <p-autoComplete dropdown="true" [(ngModel)]="MandiBhaavObject.selectedFromDate" [suggestions]="suggestions" (completeMethod)="search($event)" inputId="float-label"></p-autoComplete> -->
+            <p-calendar inputId="date-to-label" [(ngModel)]="MandiBhaavObject.selectedToDate" [iconDisplay]="'input'"
+                dateFormat="dd/M/yy">
+            </p-calendar>
+
+            <!-- <p-calendar [(ngModel)]="MandiBhaavObject.selectedFromDate" [inline]="true"></p-calendar> -->
+            <label for="date-to-label">To Date</label>
+        </span>
+    </div>
+    <!-- To Date Ends -->
+
+    <!-- Seart filter button starts -->
+    <div class="col-4 mt-1">
+
+        <button class=" btn btn-outline-success" (click)="searchMandiBhaavList()">
+            <span class="mr-1">Filter</span>
+            <i [class.fa-spin]="showSearchLoader" [class.fa-search]="!showSearchLoader"
+                [class.fa-spinner]="showSearchLoader" class="fas">
+            </i>
+        </button>
+    </div>
+    <!-- Search Filter button ends -->
+
+</div>
+
+@if (showSearchResultText) {<h6>Search Results:</h6>}
+
+
 <div class="accordion" id="accordionExample">
 
-
-
-    @for (item of mandiList; track $index) {
+    <!-- @for (item of mandiList; track $index) { -->
+    <!-- @if (mandiList[0].marketName!=="") { -->
     <div class="accordion-item">
         <h2 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
                 aria-expanded="false" aria-controls="collapseOne">
-                {{item.mandiName}}
+                {{mandiList[1].marketName!=null?mandiList[1].marketName:"No Result Found!"}}
             </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div class="">
-                <!-- accordion-body -->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>fat</td>
-                            <td>twitter</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
+            
         </div>
     </div>
-    }
+    <!-- } -->
+    <!-- } -->
+
+</div>
+
+
+<div class="">
+    <!-- accordion-body -->
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- <th scope="col">District</th> -->
+                <th scope="col">Commodity</th>
+                <th scope="col">Min Price</th>
+                <th scope="col">Max Price</th>
+                <th scope="col">Modal Price</th>
+                <th scope="col">Price Date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @for (item of mandiList; track $index) {
+            @if (item.marketName!="") {
+            <tr>
+                <!-- <td>{{item.districtName}}</td> -->
+                <td>{{item.commodityName}}</td>
+                <td>{{item.minPriceOfCommoditiy}}</td>
+                <td>{{item.maxPriceOfCommoditiy}}</td>
+                <td>{{item.modalPriceOfCommoditiy}}</td>
+                <td>{{item.priceEndDate}}</td>
+
+            </tr>
+            }
+            }
+
+    </table>
 
 </div>

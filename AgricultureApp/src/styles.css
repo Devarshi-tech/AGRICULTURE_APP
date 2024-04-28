@@ -34,5 +34,25 @@ table ,.accordion-button{
     opacity: 0.9;
 }
 
+.footer-icon{
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+}
 
+.footer-icon-home{
+    background-image: url(../src/assets/home.svg);
+}
 
+.footer-icon-indian-rupee{
+    background-image: url(../src/assets/rupee-sign.svg);
+}
+.footer-icon-calculator{
+    background-image: url(../src/assets/calculator.svg);
+}
+.footer-icon-camera{
+    background-image: url(../src/assets/info-circle.svg);
+}
+.footer-icon-share{
+    background-image: url(../src/assets/home.svg);
+}

@@ -1,22 +1,93 @@
+<!-- Weather Starts -->
 <div class="grid">
-    <div class="col-12" style="max-width: 200px !important;">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold homeComponent">
+    <div class="col-12">
+        <div class="text-center p-3 border-round-sm font-bold " style="border: 1px solid #198754;color: black;">
             <app-weather> </app-weather>
         </div>
     </div>
-    <div class="col-6">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold homeComponent">2</div>
+</div>
+<!-- Weather Ends -->
+
+<!-- Carousel Starts -->
+<div class="grid">
+    <div class="col-12">
+        <div class="text-center border-round-sm font-bold "
+            style="border: 1px solid #198754;color: black;">
+            <app-carousel></app-carousel>
+        </div>
     </div>
-    <div class="col">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold homeComponent">3</div>
+</div>
+<!-- Carousel Ends -->
+
+<!-- Latest Mandi Bhav for current location Starts -->
+<div class="grid">
+    <div class="col-12">
+
+        <div class="text-center p-3 border-round-sm font-bold" style="border: 1px solid #198754;">
+            <h6>Indore Mandi Rates on {{latestDate}}</h6>
+            <table class="table">
+                <thead> 
+                    <tr>
+                        <th scope="col">Commodity</th>
+                        <th scope="col">Min Price</th>
+                        <th scope="col">Max Price</th>
+                        <th scope="col">Modal Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of mandiList; track $index) {
+                    @if (item.marketName!="") {
+                    <tr>
+                        <td>{{item.commodityName}}</td>
+                        <td>{{item.minPriceOfCommoditiy}}</td>
+                        <td>{{item.maxPriceOfCommoditiy}}</td>
+                        <td>{{item.modalPriceOfCommoditiy}}</td>
+                    </tr>
+                    }
+                    }
+            </table>
+        </div>
     </div>
+</div>
+<!-- Latest Mandi Bhav for current location Ends -->
+
+<div class="grid">
     <div class="col">
-      <div class="text-center p-3 border-round-sm bg-primary font-bold homeComponent">1</div>
-  </div>
-  <div class="col">
-      <div class="text-center p-3 border-round-sm bg-primary font-bold homeComponent">2</div>
-  </div>
-  <div class="col">
-      <div class="text-center p-3 border-round-sm bg-primary font-bold homeComponent">3</div>
-  </div>
-  </div>
+        <div class="text-center p-3 border-round-sm font-bold"
+            style="border: 1px solid #198754;color: black;min-width: 200px;">
+            <!-- <app-weather> </app-weather> -->
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="text-center p-3 border-round-sm font-bold" style="border: 1px solid #198754;color: black;">
+            <!-- <app-weather> </app-weather> -->
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="text-center p-3 border-round-sm font-bold" style="border: 1px solid #198754;color: black;">
+            <!-- <app-weather> </app-weather> -->
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="text-center p-3 border-round-sm font-bold"
+            style="border: 1px solid #198754;color: black;min-width: 200px;">
+            <!-- <app-weather> </app-weather> -->
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="text-center p-3 border-round-sm font-bold" style="border: 1px solid #198754;color: black;">
+            <!-- <app-weather> </app-weather> -->
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="text-center p-3 border-round-sm font-bold" style="border: 1px solid #198754;color: black;">
+            <!-- <app-weather> </app-weather> -->
+        </div>
+    </div>
+</div>
+

@@ -1,12 +1,21 @@
 <!-- weather.component.html -->
+<div *ngIf="errorMessage">
+  <p>{{ errorMessage }}</p>
+</div>
 
 <div class="current-weather">
   <div class="left-section">
-    <img src="assets/sun.png" alt="Sun Logo" class="sun-logo">
-    <div class="temperature">Current Temperature: {{ currentTemperature }}°C</div>
-    <div class="city">City: {{ city }}</div>
+    <div class="icon">
+      <img [src]="getWeatherIconUrl(weatherData?.weather[0]?.icon)" alt="Weather Icon" class="sun-logo">
+    </div>
+    <div class="temperature"> {{ weatherData?.main?.temp }}°C</div>
+    <div class="city">{{ weatherData?.name }},</div>
+    <div class="description">{{ weatherData?.weather[0]?.description }}</div>
+    
   </div>
   <div class="right-section">
-    <a routerLink="/weather-forecast" class="weather-forecast-link">View Weather Forecast</a>
-  </div>
+    <a routerLink=" " class="weather-forecast-link">View Weather Forecast</a>
+  </div>  
 </div>
+
+

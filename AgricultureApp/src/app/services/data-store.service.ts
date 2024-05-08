@@ -7,15 +7,22 @@ export class DataStoreService {
 
   constructor() { }
 
-  isHomePage:boolean = true;
-  isProfilePage:boolean = false;
-  isMessagesPage:boolean = false;
-  isPhotosPage:boolean = false;
-  isSettingsPage:boolean = false;
+  isHomePage: boolean = true;
+  isProfilePage: boolean = false;
+  isMessagesPage: boolean = false;
+  isPhotosPage: boolean = false;
+  isSettingsPage: boolean = false;
+
+  currentLocation:any= {
+    city: "",
+    state: "Madhya Pradesh",
+  }
 
   // Language Change
-  isHindi:boolean = false;
-  isEnglish:boolean = true;
+  isHindi: boolean = false;
+  isEnglish: boolean = true;
+
+  latestMandiBhaavList: any = [];
 
   /**
    * Common method to filter given array(using field = name) according to given event and returns the filtered array

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { DataStoreService } from '../../services/data-store.service';
+import { AgricultureService } from '../../services/agriculture.service';
 
 @Component({
   selector: 'app-weather',
@@ -9,7 +10,7 @@ import { RouterLink } from '@angular/router';
   imports: [CommonModule,RouterLink],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.css',
-  providers:[WeatherService]
+  providers:[]
 })
 export class WeatherComponent implements OnInit {
   defaultLatitude: number = 21.8257; // Default latitude (Khargone City)
@@ -19,7 +20,7 @@ export class WeatherComponent implements OnInit {
   errorMessage: string = '';
   weatherData: any;
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(public dataStore:DataStoreService,private agricultureService:AgricultureService) { }
 
   ngOnInit() {
     if (typeof navigator !== 'undefined' && navigator.geolocation) {
@@ -35,8 +36,7 @@ export class WeatherComponent implements OnInit {
         (position) => {
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
-          console.log("Latitude: ", this.latitude);
-          console.log("Longitude: ", this.longitude);
+          
           this.getWeatherByCoordinates(this.latitude, this.longitude);
         },
         (error) => {
@@ -65,9 +65,11 @@ export class WeatherComponent implements OnInit {
   }
 
   getWeatherByCoordinates(latitude: number, longitude: number) {
-    this.weatherService.getWeatherByCoordinates(latitude, longitude).subscribe((data: any) => {
-      // console.log("Weather Data:", data);
+    this.agricultureService.getWeatherByCoordinates(latitude, longitude).subscribe((data: any) => {
+  
       this.weatherData = data;
+      this.dataStore.currentLocation.city = this.weatherData.name;
+      
     });
   }
 

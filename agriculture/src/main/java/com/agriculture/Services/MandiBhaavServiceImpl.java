@@ -19,6 +19,11 @@ import com.agriculture.DTOs.MandiBhaavDto;
 @Service
 public class MandiBhaavServiceImpl {
 
+    /**
+     * Fetch Markets for particular District
+     * @param oMandiBhaavDto
+     * @return
+     */
     public List<MandiBhaavDto> fetchMarketListForDistrict(MandiBhaavDto oMandiBhaavDto) {
 
         List<MandiBhaavDto> marketList = new ArrayList<>();
@@ -47,12 +52,11 @@ public class MandiBhaavServiceImpl {
             Document document;
             document = Jsoup.connect(url).get();
             Elements mandisElements = document.select("#ddlMarket option");
-            
 
             for (int i = 0; i < mandisElements.size(); i++) {
                 MandiBhaavDto dto = new MandiBhaavDto();
                 Element element = mandisElements.get(i);
-            
+
                 Integer value = Integer.parseInt(element.select("option").attr("value"));
                 dto.setMarketId(value);
                 dto.setMarketName(element.select("option").text());
@@ -112,10 +116,10 @@ public class MandiBhaavServiceImpl {
             document = Jsoup.connect(url).get();
 
             Elements mandisElements = document.select("table.tableagmark_new tbody tr");
-           
+
             for (int i = 0; i < mandisElements.size(); i++) {
                 Element element = mandisElements.get(i);
-                
+
                 if (element.select("span#cphBody_GridPriceData_Labdistrict_name_" + (i - 1)).text() != null) {
                     MandiBhaavDto oBhaavDto = new MandiBhaavDto();
 
@@ -148,7 +152,6 @@ public class MandiBhaavServiceImpl {
                     mandiList.add(oBhaavDto);
                 }
 
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -158,3 +161,4 @@ public class MandiBhaavServiceImpl {
     }
 
 }
+

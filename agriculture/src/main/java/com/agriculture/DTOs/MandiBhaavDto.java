@@ -1,6 +1,5 @@
 package com.agriculture.DTOs;
 
-
 public class MandiBhaavDto {
 
     private Integer marketId;

@@ -23,41 +23,42 @@ public class MandiBhaavController {
     MandiBhaavServiceImpl oBhaavServiceImpl;
 
     /**
-     * Fetch API for Main Market Price List 
+     * Fetch API for Main Market Price List
+     * 
      * @param oMandiBhaavDto
      * @return ResponseEntity containing list of MandiBhaav Objects
      */
     @PostMapping("/fetchMarketPriceList")
     public ResponseEntity<List<MandiBhaavDto>> fetchMarketPriceList(@RequestBody MandiBhaavDto oMandiBhaavDto) {
 
-        if (oMandiBhaavDto.getCommodityId() != null ) {
-            
-            return oBhaavServiceImpl.fetchMarketPriceList(oMandiBhaavDto);
-        } else {
-            
-        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        try {
+            if (oMandiBhaavDto.getCommodityId() != null) {
+
+                return oBhaavServiceImpl.fetchMarketPriceList(oMandiBhaavDto);
+            } else {
+
+                return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
         }
-
-        // else if (oMandiBhaavDto.getCommodityId() == null) {
-        // return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
-        // }
-        // else if (oMandiBhaavDto.getPriceStartDate() == null) {
-
-        // }
-        // else if (oMandiBhaavDto.getPriceEndDate() == null) {
-
-        // }
+        
+        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
     }
 
     /**
      * Fetch API for market list according to given parameters
+     * 
      * @param oMandiBhaavDto
      * @return List<MandiBhaavDto>
      */
     @PostMapping("/fetchMarketListForDistrict")
-    public List<MandiBhaavDto> fetchMarketListForDistrict(@RequestBody MandiBhaavDto oMandiBhaavDto){
+    public List<MandiBhaavDto> fetchMarketListForDistrict(@RequestBody MandiBhaavDto oMandiBhaavDto) {
 
         return oBhaavServiceImpl.fetchMarketListForDistrict(oMandiBhaavDto);
     }
+
 }

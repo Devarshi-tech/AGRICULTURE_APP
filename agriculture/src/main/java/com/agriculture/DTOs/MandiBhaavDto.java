@@ -17,6 +17,7 @@ public class MandiBhaavDto {
     private Integer minPriceOfCommoditiy;
     private Integer maxPriceOfCommoditiy;
     private Integer modalPriceOfCommoditiy;
+    private String responseMessage;
 
     public MandiBhaavDto(Integer marketId, String marketName, String stateCode, String stateName, String priceStartDate,
             String priceEndDate, Integer districtId, String districtName, Integer commodityId, String commodityName,
@@ -160,6 +161,14 @@ public class MandiBhaavDto {
 
     public void setModalPriceOfCommoditiy(Integer modalPriceOfCommoditiy) {
         this.modalPriceOfCommoditiy = modalPriceOfCommoditiy;
+    }
+
+    public String getResponseMessage() {
+        return responseMessage;
+    }
+
+    public void setResponseMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
     }
 
 }

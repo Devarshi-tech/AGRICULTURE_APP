@@ -56,7 +56,7 @@ public class MandiBhaavServiceImpl {
             for (int i = 0; i < mandisElements.size(); i++) {
                 MandiBhaavDto dto = new MandiBhaavDto();
                 Element element = mandisElements.get(i);
-
+            
                 Integer value = Integer.parseInt(element.select("option").attr("value"));
                 dto.setMarketId(value);
                 dto.setMarketName(element.select("option").text());
@@ -118,43 +118,53 @@ public class MandiBhaavServiceImpl {
             Elements mandisElements = document.select("table.tableagmark_new tbody tr");
 
             for (int i = 0; i < mandisElements.size(); i++) {
+                
                 Element element = mandisElements.get(i);
-
+                
+            try{
                 if (element.select("span#cphBody_GridPriceData_Labdistrict_name_" + (i - 1)).text() != null) {
                     MandiBhaavDto oBhaavDto = new MandiBhaavDto();
-
+   
                     oBhaavDto.setDistrictName(
                             element.select("span#cphBody_GridPriceData_Labdistrict_name_" + (i - 1)).text());
                     oBhaavDto.setMarketName(
                             element.select("span#cphBody_GridPriceData_LabdMarketName_" + (i - 1)).text());
                     oBhaavDto.setCommodityName(
                             element.select("span#cphBody_GridPriceData_Labcomm_name_" + (i - 1)).text());
-
+   
                     Integer minPrice = Integer.parseInt(
                             (i - 1) > -1 ? element.select("span#cphBody_GridPriceData_LabMinPrice_" + (i - 1)).text()
                                     : "0");
-
+   
                     oBhaavDto.setMinPriceOfCommoditiy(minPrice);
-
+   
                     Integer maxPrice = Integer.parseInt(
                             (i - 1) > -1 ? element.select("span#cphBody_GridPriceData_Labmaxpric_" + (i - 1)).text()
                                     : "0");
                     oBhaavDto.setMaxPriceOfCommoditiy(maxPrice);
-
+   
                     Integer modalPrice = Integer.parseInt(
                             (i - 1) > -1 ? element.select("span#cphBody_GridPriceData_LabModalpric_" + (i - 1)).text()
                                     : "0");
                     oBhaavDto.setModalPriceOfCommoditiy(modalPrice);
-
+   
                     oBhaavDto.setPriceEndDate(
                             element.select("span#cphBody_GridPriceData_LabReportedDate_" + (i - 1)).text());
-
+   
                     mandiList.add(oBhaavDto);
                 }
-
+            
             }
-        } catch (IOException e) {
+            catch(Exception e){
+                e.printStackTrace();
+            }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
+            List<MandiBhaavDto> emptyList = new ArrayList<>();
+            oMandiBhaavDto.setResponseMessage("Data Not Found");
+            emptyList.add(oMandiBhaavDto);
+            return new ResponseEntity<>(emptyList,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(mandiList, HttpStatus.OK);
 

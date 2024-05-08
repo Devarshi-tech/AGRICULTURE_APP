@@ -15,12 +15,6 @@ export class MenuItemsComponent {
   // @Input() isFooter:boolean;
   
   menuItemsList: any = [
-    // { name: "Home", iconsClassList: ["fas fa-home navbar-brand"], routerLink: "/home" },
-    // { name: "Bhaav", iconsClassList: ["fas fa-indian-rupee navbar-brand"], routerLink: "/mandibhaav" },
-    // { name: "Calculator", iconsClassList: ["fas fa-calculator navbar-brand"], routerLink: "/labourCalculator" },
-    // { name: "Photos", iconsClassList: ["fas fa-camera navbar-brand"], routerLink: "/home" },
-    // { name: "Settings", iconsClassList: ["fas fa-share navbar-brand"], routerLink: "/settings" },
-    // { name: "Settings", iconsClassList: ["fas fa-share navbar-brand"], routerLink: "/settings" }
     { name: "Home", iconsClassList: ["footer-icon footer-icon-home navbar-brand"], routerLink: "/home" },
     { name: "Bhaav", iconsClassList: ["footer-icon footer-icon-indian-rupee navbar-brand"], routerLink: "/mandibhaav" },
     { name: "Calculator", iconsClassList: ["footer-icon footer-icon-calculator navbar-brand"], routerLink: "/labourCalculator" },
@@ -30,15 +24,8 @@ export class MenuItemsComponent {
   ];
 
   ngOnInit() {
-    this.showGoToTopButtonMethod();
   }
 
-  @HostListener('window:scroll', ['$event'])
-  showGoToTopButtonMethod() {
-    if (typeof window !== 'undefined') {
-      console.log(window.location.pathname);
-    }
-  }
 
 
 

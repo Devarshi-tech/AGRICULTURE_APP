@@ -11,8 +11,7 @@
 <!-- Carousel Starts -->
 <div class="grid">
     <div class="col-12">
-        <div class="text-center border-round-sm font-bold "
-            style="border: 1px solid #198754;color: black;">
+        <div class="text-center border-round-sm font-bold " style="border: 1px solid #198754;color: black;">
             <app-carousel></app-carousel>
         </div>
     </div>
@@ -23,29 +22,47 @@
 <div class="grid">
     <div class="col-12">
 
-        <div class="text-center p-3 border-round-sm font-bold" style="border: 1px solid #198754;">
-            <h6>Indore Mandi Rates on {{latestDate}}</h6>
-            <table class="table">
-                <thead> 
-                    <tr>
-                        <th scope="col">Commodity</th>
-                        <th scope="col">Min Price</th>
-                        <th scope="col">Max Price</th>
-                        <th scope="col">Modal Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (item of mandiList; track $index) {
-                    @if (item.marketName!="") {
-                    <tr>
-                        <td>{{item.commodityName}}</td>
-                        <td>{{item.minPriceOfCommoditiy}}</td>
-                        <td>{{item.maxPriceOfCommoditiy}}</td>
-                        <td>{{item.modalPriceOfCommoditiy}}</td>
-                    </tr>
+        <div class="text-center p-1 border-round-sm font-bold" style="border: 1px solid #198754;">
+            <!-- <h3>{{this.dataStore.currentLocation.city}} Mandi Rates</h3> -->
+            <h4>Mandi rates in your Area</h4>
+            Refresh <i class="mr-2 fas fa-rotate" (click)="processData(this.currentLocationDefaultMandiPriceList)"></i>
+           
+            @if (this.dataStore.latestMandiBhaavList.length>0) {
+                @for (marketPrice of this.dataStore.latestMandiBhaavList; track $index) {
+                    <div>
+                        <h6>Market: {{ marketPrice.market }}</h6>
+                        
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Commodity</th>
+                                    <th scope="col">Min Price</th>
+                                    <th scope="col">Max Price</th>
+                                    <th scope="col">Modal Price</th>
+                                    <th scope="col">Updated On</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (price of marketPrice.prices; track $index) {
+                                <tr>
+                                    <td>{{ price.commodity }}</td>
+                                    <td>{{ price.minPrice }}</td>
+                                    <td>{{ price.maxPrice }}</td>
+                                    <td>{{ price.modalPrice }}</td>
+                                    <td>{{ price.priceEndDate }}</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+        
+                    </div>
                     }
-                    }
-            </table>
+            }
+            @if (marketPrices.length==0) {
+                <i style="color: gray;font-size: 0.6em;">Loading Latest Market Rates For You...</i>
+                
+            }
+
         </div>
     </div>
 </div>
@@ -90,4 +107,3 @@
         </div>
     </div>
 </div>
-

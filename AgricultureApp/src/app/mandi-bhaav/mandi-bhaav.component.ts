@@ -45,11 +45,7 @@ export class MandiBhaavComponent {
   constructor(private agricultureServices: AgricultureService, public dataStore: DataStoreService, private datePipe: DatePipe) { }
 
   mandiList: any = [
-    { "mandiID": null, "mandiName": "उज्जैन मंडी भाव", "lasteUpdated": null, "note": null, "itemsList": null },
-    { "mandiID": null, "mandiName": "हरदा मंडी भाव", "lasteUpdated": null, "note": null, "itemsList": null },
-    { "mandiID": null, "mandiName": "जावरा मंडी भाव", "lasteUpdated": null, "note": null, "itemsList": null },
-    { "mandiID": null, "mandiName": "देवास मंडी भाव", "lasteUpdated": null, "note": null, "itemsList": null },
-    { "mandiID": null, "mandiName": "बेतुल मंडी भाव", "lasteUpdated": null, "note": null, "itemsList": null }
+    
   ];
 
   ngOnInit() {
@@ -64,7 +60,17 @@ export class MandiBhaavComponent {
       temp = [...data];
       this.commoditiesMasterList = temp;
     });
+
+    if(this.navigator.geolocation){
+      
+      this.navigator.geolocation.getCurrentPosition((position:any)=>{ 
+     
+      })
+    }
+    
   }
+
+  navigator:any = {};
 
 
   /**
@@ -153,19 +159,18 @@ export class MandiBhaavComponent {
       marketId: this.MandiBhaavObject.selectedMarket.id,
       marketName:this.MandiBhaavObject.selectedMarket.name
     }
-    console.log(mandiBhaavDto)
+   
 
     this.agricultureServices.allMandiPriceList(mandiBhaavDto).subscribe(data => {
 
       this.mandiList = data;
-      console.log("data : ");
-      console.log(data);
+     
       if (this.mandiList.length != 0 || this.mandiList != undefined || this.mandiList != null) {
        
         this.showSearchLoader = false;
         window.scroll(0, 250);
         this.showSearchResultText = true;
-        console.log(this.mandiList);
+    
       }
 
     });

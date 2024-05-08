@@ -1,4 +1,6 @@
 <h2>Mandi Bhaav</h2>
+
+<!-- Filter Starts -->
 <div class="grid ">
     <!-- Commodity Starts -->
     <div class="col-4 mt-4">
@@ -64,12 +66,10 @@
     <!-- To Date Starts -->
     <div class="col-4 mt-4">
         <span class=" p-float-label">
-            <!-- <p-autoComplete dropdown="true" [(ngModel)]="MandiBhaavObject.selectedFromDate" [suggestions]="suggestions" (completeMethod)="search($event)" inputId="float-label"></p-autoComplete> -->
             <p-calendar inputId="date-to-label" [(ngModel)]="MandiBhaavObject.selectedToDate" [iconDisplay]="'input'"
                 dateFormat="dd/M/yy">
             </p-calendar>
 
-            <!-- <p-calendar [(ngModel)]="MandiBhaavObject.selectedFromDate" [inline]="true"></p-calendar> -->
             <label for="date-to-label">To Date</label>
         </span>
     </div>
@@ -88,61 +88,65 @@
     <!-- Search Filter button ends -->
 
 </div>
+<!-- Filter Ends -->
+
 
 @if (showSearchResultText) {<h6>Search Results:</h6>}
 
 
-<div class="accordion" id="accordionExample">
+<!-- <div class="accordion" >
 
-    <!-- @for (item of mandiList; track $index) { -->
-    <!-- @if (mandiList[0].marketName!=="") { -->
     <div class="accordion-item">
-        <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                aria-expanded="false" aria-controls="collapseOne">
-                {{mandiList[1].marketName!=null?mandiList[1].marketName:"No Result Found!"}}
-            </button>
+        <h2 class="accordion-header" class="accordion-button">
+    
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-collapse collapse show" >
             
         </div>
     </div>
-    <!-- } -->
-    <!-- } -->
+
+</div> -->
+
+<div class="grid">
+    <div class="col">
+<h3>{{mandiList[1]!=undefined && mandiList[1]!= null ? mandiList[1].marketName!=null?mandiList[1].marketName:"No Result Found!":"No Result Found"}}</h3>
+    </div>
 
 </div>
 
 
-<div class="">
-    <!-- accordion-body -->
-    <table class="table">
-        <thead>
-            <tr>
-                <!-- <th scope="col">District</th> -->
-                <th scope="col">Commodity</th>
-                <th scope="col">Min Price</th>
-                <th scope="col">Max Price</th>
-                <th scope="col">Modal Price</th>
-                <th scope="col">Price Date</th>
-            </tr>
-        </thead>
-        <tbody>
-
-
-            @for (item of mandiList; track $index) {
-            @if (item.marketName!="") {
-            <tr>
-                <!-- <td>{{item.districtName}}</td> -->
-                <td>{{item.commodityName}}</td>
-                <td>{{item.minPriceOfCommoditiy}}</td>
-                <td>{{item.maxPriceOfCommoditiy}}</td>
-                <td>{{item.modalPriceOfCommoditiy}}</td>
-                <td>{{item.priceEndDate}}</td>
-
-            </tr>
-            }
-            }
-
-    </table>
-
-</div>
+@if(mandiList[1] !=undefined && mandiList[1]!= null ){
+    <div class="">
+        <!-- accordion-body -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <!-- <th scope="col">District</th> -->
+                    <th scope="col">Commodity</th>
+                    <th scope="col">Min Price</th>
+                    <th scope="col">Max Price</th>
+                    <th scope="col">Modal Price</th>
+                    <th scope="col">Price Date</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+    
+                @for (item of mandiList; track $index) {
+                @if (item.marketName!="") {
+                <tr>
+                    <!-- <td>{{item.districtName}}</td> -->
+                    <td>{{item.commodityName}}</td>
+                    <td>{{item.minPriceOfCommoditiy}}</td>
+                    <td>{{item.maxPriceOfCommoditiy}}</td>
+                    <td>{{item.modalPriceOfCommoditiy}}</td>
+                    <td>{{item.priceEndDate}}</td>
+    
+                </tr>
+                }
+                }
+    
+        </table>
+    
+    </div>
+}

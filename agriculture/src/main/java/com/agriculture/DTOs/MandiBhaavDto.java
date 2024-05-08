@@ -18,6 +18,7 @@ public class MandiBhaavDto {
     private Integer maxPriceOfCommoditiy;
     private Integer modalPriceOfCommoditiy;
     private String responseMessage;
+    private String responseCode;
 
     public MandiBhaavDto(Integer marketId, String marketName, String stateCode, String stateName, String priceStartDate,
             String priceEndDate, Integer districtId, String districtName, Integer commodityId, String commodityName,
@@ -169,6 +170,14 @@ public class MandiBhaavDto {
 
     public void setResponseMessage(String responseMessage) {
         this.responseMessage = responseMessage;
+    }
+
+    public String getResponseCode() {
+        return responseCode;
+    }
+
+    public void setResponseCode(String responseCode) {
+        this.responseCode = responseCode;
     }
 
 }

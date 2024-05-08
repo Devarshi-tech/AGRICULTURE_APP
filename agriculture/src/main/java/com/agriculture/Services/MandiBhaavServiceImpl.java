@@ -163,6 +163,8 @@ public class MandiBhaavServiceImpl {
             e.printStackTrace();
             List<MandiBhaavDto> emptyList = new ArrayList<>();
             oMandiBhaavDto.setResponseMessage("Data Not Found");
+            oMandiBhaavDto.setResponseCode("404");
+            emptyList.add(oMandiBhaavDto);
             emptyList.add(oMandiBhaavDto);
             return new ResponseEntity<>(emptyList,HttpStatus.NOT_FOUND);
         }

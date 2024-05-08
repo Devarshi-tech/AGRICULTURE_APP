@@ -1,20 +1,20 @@
 package com.agriculture.Models;
 
 import java.util.Date;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.GeneratedValue;
+// import jakarta.persistence.GenerationType;
+// import jakarta.persistence.Id;
+// import jakarta.persistence.Table;
 /**
  * MandiBhaav Entity to manage all the market rates for all the commodities accross India
  */
-@Entity
-@Table(name = "mandis")
+// @Entity
+// @Table(name = "mandis")
 public class MandiBhaav {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer mandiID;
     private Integer marketId;
     private String stateCode;

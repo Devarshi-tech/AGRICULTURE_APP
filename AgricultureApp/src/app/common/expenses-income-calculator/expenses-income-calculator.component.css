@@ -1,0 +1,82 @@
+/* farmer-expenses-income.component.css */
+
+/* Container styles */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styles */
+form {
+  margin-bottom: 20px;
+}
+
+/* Input styles */
+input[type="number"],
+input[type="text"] {
+  width: calc(100% - 12px); /* Adjusting for padding */
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; /* Adding border for better visibility */
+  border-radius: 4px;
+}
+
+/* Button styles */
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px; /* Adding space between buttons */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Remove button styles */
+.remove-button {
+  display: inline-block;
+  width: 100%; /* Adjusting width for smaller screens */
+  padding: 8px;
+  margin-top: 10px; /* Matching the space between buttons */
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #bd2130;
+}
+
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 600px) {
+  input[type="number"],
+  input[type="text"],
+  button,
+  .remove-button {
+    width: 100%;
+  }
+}
+
+/* Highlighted income */
+.total-income {
+  font-size: 24px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
+  color: #4CAF50; /* Green color */
+  margin-top: 20px; /* Add some spacing from the rest of the content */
+  text-align: center; /* Center align */
+  padding: 10px; /* Add padding for better readability */
+  border: 2px solid #4CAF50; /* Add border for emphasis */
+  border-radius: 8px; /* Rounded corners */
+}

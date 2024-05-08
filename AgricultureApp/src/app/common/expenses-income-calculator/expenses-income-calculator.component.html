@@ -1,0 +1,44 @@
+<!-- farmer-expenses-income.component.html -->
+<div class="container">
+  <h3>Expenses and Income Calculator</h3>
+  <h4>Expenses</h4>
+  <form (ngSubmit)="calculateTotalIncome()">
+    <div *ngFor="let expense of expenses; let i = index" class="expense-item">
+      <label for="expenseReason{{i}}">Reason:</label>
+      <input type="text" id="expenseReason{{i}}" name="expenseReason{{i}}" [(ngModel)]="expense.reason" required>
+      
+      <label for="expenseAmount{{i}}">Amount:</label>
+      <input type="number" id="expenseAmount{{i}}" name="expenseAmount{{i}}" [(ngModel)]="expense.amount" required>
+
+      <button type="button" (click)="removeExpense(i)" class="remove-button">Remove</button>
+    </div>
+    <button type="button" (click)="addExpense()">Add Expense</button>
+
+    <hr>
+
+    <h4>Income</h4>
+    <div *ngFor="let crop of crops; let i = index" class="crop-item">
+      <label for="cropName{{i}}">Crop Name:</label>
+      <input type="text" id="cropName{{i}}" name="cropName{{i}}" [(ngModel)]="crop.name" required>
+
+      <label for="cropWeight{{i}}">Total Weight (quintals):</label>
+      <input type="number" id="cropWeight{{i}}" name="cropWeight{{i}}" [(ngModel)]="crop.weight" required>
+
+      <label for="cropPrice{{i}}">Crop Price per Quintal:</label>
+      <input type="number" id="cropPrice{{i}}" name="cropPrice{{i}}" [(ngModel)]="crop.price" required>
+      
+      <button type="button" (click)="removeCrop(i)" class="remove-button">Remove Crop</button>
+    </div>
+    <button type="button" (click)="addCrop()">Add Crop</button>
+
+    <hr>
+
+    <button type="submit">Calculate Income</button>
+    <button type="button" (click)="clearForm()">Clear</button> <!-- Clear button -->
+  </form>
+
+  <div *ngIf="totalIncome !== null" class="total-income">
+      Total Income: {{ totalIncome }}
+    </div>
+    
+</div>

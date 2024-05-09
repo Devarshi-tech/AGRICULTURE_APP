@@ -23,6 +23,14 @@ public class MandiBhaavController {
     MandiBhaavServiceImpl oBhaavServiceImpl;
 
     /**
+     * Tesing    
+     */
+    @PostMapping("/testing")
+    public String testingAPI(){
+        return "Working";
+    }
+
+    /**
      * Fetch API for Main Market Price List
      * 
      * @param oMandiBhaavDto
@@ -34,8 +42,7 @@ public class MandiBhaavController {
         try {
             if (oMandiBhaavDto.getCommodityId() != null) {
 
-                // return oBhaavServiceImpl.fetchMarketPriceList(oMandiBhaavDto);
-                return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+                return oBhaavServiceImpl.fetchMarketPriceList(oMandiBhaavDto);
             } else {
 
                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

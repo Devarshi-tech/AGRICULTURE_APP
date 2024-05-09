@@ -34,7 +34,8 @@ public class MandiBhaavController {
         try {
             if (oMandiBhaavDto.getCommodityId() != null) {
 
-                return oBhaavServiceImpl.fetchMarketPriceList(oMandiBhaavDto);
+                // return oBhaavServiceImpl.fetchMarketPriceList(oMandiBhaavDto);
+                return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
             } else {
 
                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

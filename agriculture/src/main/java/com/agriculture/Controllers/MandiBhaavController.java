@@ -16,7 +16,7 @@ import com.agriculture.Services.MandiBhaavServiceImpl;
 
 @RestController
 @RequestMapping("/market")
-@CrossOrigin(value = "http://localhost:4200")
+@CrossOrigin("*")
 public class MandiBhaavController {
 
     @Autowired

@@ -56,3 +56,7 @@ table ,.accordion-button{
 .footer-icon-share{
     background-image: url(../src/assets/home.svg);
 }
+
+.icon-smile{
+    background-image: url(../src/assets/smile.svg);
+}

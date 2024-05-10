@@ -75,7 +75,11 @@ export class WeatherComponent implements OnInit {
 
   getWeatherIconUrl(iconCode: string): string {
     // Construct the URL for the weather icon
-    return `http://openweathermap.org/img/w/${iconCode}.png`;
+    if(iconCode!=null){
+      return `http://openweathermap.org/img/w/${iconCode}.png`;
+    }
+
+    return "";
   }
   
   

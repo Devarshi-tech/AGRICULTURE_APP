@@ -6,7 +6,12 @@
 <div class="current-weather">
   <div class="left-section">
     <div class="icon">
-      <img [src]="getWeatherIconUrl(weatherData?.weather[0]?.icon)" alt="Weather Icon" class="sun-logo">
+      @if(getWeatherIconUrl(weatherData?.weather[0]?.icon) != ""){
+        <img [src]="getWeatherIconUrl(weatherData?.weather[0]?.icon)" alt="Weather Icon" class="sun-logo">
+      }
+      @else{
+        <i class="icon-smile"></i>
+      }
     </div>
     <div class="temperature"> {{ weatherData?.main?.temp }}°C</div>
     <div class="city">{{ weatherData?.name }},</div>

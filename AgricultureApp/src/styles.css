@@ -44,6 +44,11 @@ table ,.accordion-button{
     background-image: url(../src/assets/home.svg);
 }
 
+.footer-icon-home-active{
+    border: 0.5px solid #198754;
+    /* background-image: url(../src/assets/home.svg); */
+}
+
 .footer-icon-indian-rupee{
     background-image: url(../src/assets/rupee-sign.svg);
 }
@@ -60,3 +65,9 @@ table ,.accordion-button{
 .icon-smile{
     background-image: url(../src/assets/smile.svg);
 }
+
+.icon-container {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center items horizontally */
+  }

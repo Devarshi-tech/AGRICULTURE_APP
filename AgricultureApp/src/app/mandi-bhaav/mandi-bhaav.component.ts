@@ -49,6 +49,9 @@ export class MandiBhaavComponent {
   ];
 
   ngOnInit() {
+
+    this.dataStore.activeFooterIconNumber = 1;
+    
     this.agricultureServices.fetchAllStates().subscribe(data => {
       let temp: any = [];
       temp = [...data];

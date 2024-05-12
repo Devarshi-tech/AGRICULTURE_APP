@@ -40,7 +40,17 @@
     <div class="container-fluid">
 
         @for (item of menuItemsList; track $index) {
-        <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"></i>
+        <!-- <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"  
+        ></i>
+        <i class="fa-solid fa-sort-up fa-xs" style="color: #135736;"></i> -->
+
+        <div class="icon-container">
+            @if($index==this.dataStore.activeFooterIconNumber){
+                <i class="fa-solid fa-sort-up fa-xs mb-1" style="color: #135736;"></i>
+            }
+            <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"></i>
+           
+          </div>
         }
 
     </div>

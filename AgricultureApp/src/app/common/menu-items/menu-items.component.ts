@@ -1,5 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DataStoreService } from '../../services/data-store.service';
 
 @Component({
   selector: 'app-menu-items',
@@ -13,6 +14,8 @@ export class MenuItemsComponent {
   @Input() isHeader: any;
   @Input() isFooter: any;
   // @Input() isFooter:boolean;
+
+  constructor(public dataStore:DataStoreService){}
   
   menuItemsList: any = [
     { name: "Home", iconsClassList: ["footer-icon footer-icon-home navbar-brand"], routerLink: "/home" },

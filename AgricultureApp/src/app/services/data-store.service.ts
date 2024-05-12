@@ -7,11 +7,7 @@ export class DataStoreService {
 
   constructor() { }
 
-  isHomePage: boolean = true;
-  isProfilePage: boolean = false;
-  isMessagesPage: boolean = false;
-  isPhotosPage: boolean = false;
-  isSettingsPage: boolean = false;
+  activeFooterIconNumber:number = 0; // Home=0, Mandi=1, Calculator=2, info=3, Settings=4 
 
   currentLocation:any= {
     city: "",

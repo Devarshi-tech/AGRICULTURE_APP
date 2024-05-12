@@ -32,6 +32,9 @@ export class HomeComponent {
 
   ngOnInit() {
 
+    //Home Component Active
+    this.dataStore.activeFooterIconNumber = 0;
+
     const currentDate = new Date();
 
     // Subtract 1 day from the current date

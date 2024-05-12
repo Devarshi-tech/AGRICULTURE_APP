@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DataStoreService } from '../../services/data-store.service';
 
 
 interface Expense {
@@ -21,6 +22,13 @@ interface Crop {
   styleUrl: './expenses-income-calculator.component.css'
 })
 export class ExpensesIncomeCalculatorComponent {
+
+  constructor(public dataStore:DataStoreService){}
+
+  ngOnInit(){
+    this.dataStore.activeFooterIconNumber = 2;
+  }
+
   expenses: Expense[] = [{ amount: 0, reason: '' }];
   crops: Crop[] = [{ name: '', weight: 0, price: 0 }];
   totalIncome: number | null = null;

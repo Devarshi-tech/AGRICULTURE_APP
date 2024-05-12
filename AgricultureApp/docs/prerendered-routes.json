@@ -1,0 +1,8 @@
+{
+  "routes": [
+    "/home",
+    "/labourCalculator",
+    "/mandibhaav",
+    "/settings"
+  ]
+}

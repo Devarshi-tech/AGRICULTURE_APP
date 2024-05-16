@@ -10,15 +10,6 @@ import { HomeComponent } from './app/common/home/home.component';
 import { SettingsComponent } from './app/common/settings/settings.component';
 import { LaborCalculatorComponent } from './app/common/labour-calculator/labour-calculator.component';
 
-bootstrapApplication(AppComponent,
-  {
-    providers:[importProvidersFrom([BrowserAnimationsModule]),provideHttpClient(),provideRouter([
-      { path: '',   redirectTo: '/home', pathMatch: 'full' },
-    {path:'home',component:HomeComponent},
-    {path:'mandibhaav' , component: MandiBhaavComponent},
-    {path:'settings',component:SettingsComponent},
-    {path:'labourCalculator',component:LaborCalculatorComponent}
-    ])]
-  }
+bootstrapApplication(AppComponent,appConfig
 )
   .catch((err) => console.error(err));

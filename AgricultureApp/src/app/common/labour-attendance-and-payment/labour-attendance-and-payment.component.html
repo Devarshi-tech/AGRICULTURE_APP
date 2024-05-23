@@ -1,0 +1,139 @@
+<div class="container">
+    <h1>Labour Attendance and Payment Details</h1>
+    <!-- Labour Form -->
+  <form #labourForm="ngForm" (ngSubmit)="addLabour()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" type="text" [(ngModel)]="newLabour.name" name="name" required #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error">
+        Name is required.
+      </div>
+    </div>
+    <div>
+      <label for="dailyRate">Daily Rate:</label>
+      <input id="dailyRate" type="number" [(ngModel)]="newLabour.dailyRate" name="dailyRate" (focus)="clearZero($event)" required>
+      <!-- <div>
+     <label for="daysWorked">Days Worked:</label>
+     <input id="daysWorked" type="number" [(ngModel)]="newLabour.daysWorked" name="daysWorked" (focus)="clearZero($event)" >
+   </div> -->
+    </div>
+    <button type="submit" [disabled]="labourForm.invalid">{{ editIndex !== null ? 'Update Labour' : 'Add Labour' }}</button>
+    <button type="button" (click)="resetForm()" *ngIf="editIndex !== null">Cancel</button>
+  </form>
+    
+    <h2>Labour List</h2>
+    <!-- Labour List Table -->
+    <table class="labour-list">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Days Worked</th>
+          <th>Daily Rate</th>
+          <th>Total Cost</th>
+          <th>Amount Paid</th>
+          <th>Remaining Amount</th>
+          <th>Actions</th>
+          <th>Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let labour of labourers; let i = index" 
+        (click)="selectLabour(labour, i)" 
+        [class.selected]="selectedLabourIndex === i">
+          <td data-label="Name">{{ labour.name }}</td>
+          <td data-label="Days Worked">{{ labour.daysWorked }}</td>
+          <td data-label="Daily Rate">{{ labour.dailyRate }}</td>
+          <td data-label="Total Cost">{{ labour.daysWorked * labour.dailyRate }}</td>
+          <td data-label="Amount Paid">{{ calculateTotalAmountPaid(labour) }}</td>
+          <td data-label="Remaining Amount">{{ calculateRemainingAmount(labour) }}</td>
+          <td data-label="Actions">
+            <button (click)="editLabour(i, $event)">Edit</button>
+            <button (click)="deleteLabour(i, $event)">Delete</button>
+          </td>
+          <td data-label="Attendance">
+            <button (click)="markAttendance(i, true)" [ngClass]="{'present': isPresent(i)}">Present</button>
+            <button (click)="markAttendance(i, false)"  [ngClass]="{'absent': isAbsent(i)}">Absent</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedLabour">
+      <form #paymentForm="ngForm" (ngSubmit)="addPayment()" class="payment-form">
+        <div class="form-group">
+          <label for="paymentDescription">Payment Description:</label>
+          <input id="paymentDescription" type="text" [(ngModel)]="newPayment.description" name="description" required>
+        </div>
+        <div class="form-group">
+          <label for="paymentAmount">Amount Paid:</label>
+          <input id="paymentAmount" type="number" [(ngModel)]="newPayment.amount" name="amount"  (focus)="clearZero($event)" required>
+        </div>
+        <div class="form-group">
+          <label for="paymentDate">Payment Date:</label>
+          <input id="paymentDate" type="date" [(ngModel)]="newPayment.date" name="date" required>
+        </div>
+        <button type="submit">Add Payment</button>
+      </form>
+  
+      <h2>Payment description for {{ selectedLabour.name }}</h2>
+      <table class="payment-list">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payment of selectedLabour.payments; let i = index">
+            <td *ngIf="!payment.editing">{{ payment.description }}</td>
+            <td *ngIf="payment.editing"><input [(ngModel)]="payment.description"></td>
+            
+            <td *ngIf="!payment.editing">{{ payment.amount }}</td>
+            <td *ngIf="payment.editing"><input type="number" [(ngModel)]="payment.amount"></td>
+            
+            <td *ngIf="!payment.editing">{{ payment.date | date:'dd MMMM yyyy' }}</td>
+            <td *ngIf="payment.editing"><input type="date" [(ngModel)]="payment.date"></td>
+            
+            <td>
+              <button *ngIf="!payment.editing" (click)="editPayment(payment)">Edit</button>
+              <button *ngIf="payment.editing" (click)="savePayment(payment)">Save</button>
+              <button (click)="deletePayment(selectedLabour, payment)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <h2>Attendance History for {{ selectedLabour.name }}</h2>
+      <table class="attendance-history">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of selectedLabour.attendance; let i = index">
+            <td *ngIf="!record.editing">{{ record.date | date:'dd MMMM yyyy' }}</td>
+            <td *ngIf="record.editing"><input type="date" [(ngModel)]="record.date"></td>
+  
+            <td *ngIf="!record.editing">{{ record.present ? 'Present' : 'Absent' }}</td>
+            <td *ngIf="record.editing">
+              <select [(ngModel)]="record.present">
+                <option [ngValue]="true">Present</option>
+                <option [ngValue]="false">Absent</option>
+              </select>
+            </td>
+  
+            <td>
+              <button *ngIf="!record.editing" (click)="editAttendance(record)">Edit</button>
+              <button *ngIf="record.editing" (click)="saveAttendance(record)">Save</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

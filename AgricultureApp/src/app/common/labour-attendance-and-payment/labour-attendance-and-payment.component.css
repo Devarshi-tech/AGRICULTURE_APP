@@ -1,0 +1,186 @@
+/* General container styling */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Form styling */
+form {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+  width: 100%; /* Ensure all input fields have equal width */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  
+}
+
+.form-group div {
+  flex: 1;
+}
+
+button {
+  padding: 8px 12px;
+  margin-right: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+button[disabled] {
+  background-color: #ccc;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table th {
+  background-color: #f4f4f4;
+}
+
+.labour-list th,
+.payment-list th,
+.attendance-history th {
+  background-color: #007bff;
+  color: white;
+}
+
+.labour-list td,
+.payment-list td,
+.attendance-history td {
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+tr.selected {
+  background-color: cyan; /* Change to desired color */
+}
+
+.present {
+  background-color: green;
+}
+
+.absent {
+  background-color: red;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  table {
+    border: none;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  .labour-list td {
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  .labour-list td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  form div {
+    margin-bottom: 5px;
+  }
+
+  input[type="text"], input[type="number"], input[type="date"] {
+    padding: 6px;
+  }
+
+  table, td:before {
+    font-size: 14px;
+  }
+
+  td {
+    padding-left: 40%;
+  }
+
+  td:before {
+    width: calc(50% - 10px);
+  }
+}

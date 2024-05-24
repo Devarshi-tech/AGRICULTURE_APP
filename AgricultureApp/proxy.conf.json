@@ -1,6 +1,0 @@
-{
-    "/api": {
-      "target": "http://3.227.166.208:8080/market/",
-      "secure": false
-    }
-  }

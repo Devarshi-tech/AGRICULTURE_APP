@@ -6,14 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class AgricultureService {
 
-  // url: string = "http://localhost:8080/market/";
+  url: string = "http://localhost:8080/market/";
 
-  url: string = "http://3.227.166.208:8080/market/";
+  // url: string = "http://3.227.166.208:8080/market/";
 
   weatherURL: string = 'https://api.openweathermap.org/data/2.5/weather?lat=';
   WEATHER_API_KEY: string = "88e14476e272b09acd72b0661a073111";
 
   constructor(private httpClient: HttpClient) { }
+
+  // public testDataCurrentLocationMarketList(){
+  //   return this.httpClient.get("assets/testDataCurrentLocationMarketList.json")
+  // }
 
   /**
    * Fetch Filtered Price List of mandi

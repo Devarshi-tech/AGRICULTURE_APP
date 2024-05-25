@@ -1,11 +1,13 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DataStoreService } from '../../services/data-store.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-menu-items',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive,FormsModule],
   templateUrl: './menu-items.component.html',
   styleUrl: './menu-items.component.css'
 })
@@ -16,6 +18,8 @@ export class MenuItemsComponent {
   // @Input() isFooter:boolean;
 
   constructor(public dataStore:DataStoreService){}
+
+  globalSearch:String  ="";
   
   menuItemsList: any = [
     { name: "Home", iconsClassList: ["footer-icon footer-icon-home navbar-brand"], routerLink: "/home" },
@@ -26,7 +30,10 @@ export class MenuItemsComponent {
 
   ];
 
+  pageName:String ="";
+
   ngOnInit() {
+    this.pageName =  window.location.pathname;
   }
 
 

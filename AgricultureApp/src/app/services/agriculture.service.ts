@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class AgricultureService {
 
-  url: string = "http://localhost:8080/market/";
+  // url: string = "http://localhost:8080/market/"; 
+  url: string = "http://localhost:8081/market/"; // wrong url added just to avoid frquent backend calls 
 
   // url: string = "http://3.227.166.208:8080/market/";
 

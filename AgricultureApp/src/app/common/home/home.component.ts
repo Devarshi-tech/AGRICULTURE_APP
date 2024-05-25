@@ -35,6 +35,8 @@ export class HomeComponent {
     //Home Component Active
     this.dataStore.activeFooterIconNumber = 0;
 
+    this.dataStore.currentPage=""; // reseting current page location
+
     const currentDate = new Date();
 
     // Subtract 1 day from the current date

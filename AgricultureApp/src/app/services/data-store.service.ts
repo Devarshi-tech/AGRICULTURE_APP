@@ -1,5 +1,14 @@
 import { Injectable } from '@angular/core';
 
+// user interface 
+interface user {
+  name: String,
+  access: String,
+  contactNumber: String,
+  email:String,
+  farm:number
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -7,11 +16,23 @@ export class DataStoreService {
 
   constructor() { }
 
-  activeFooterIconNumber:number = 0; // Home=0, Mandi=1, Calculator=2, info=3, Settings=4 
+  activeFooterIconNumber: number = 0; // Home=0, Mandi=1, Calculator=2, info=3, Settings=4 
 
-  currentLocation:any= {
+  globalSearchActive: boolean = false;
+
+  currentLocation: any = {
     city: "",
     state: "Madhya Pradesh",
+  }
+
+  currentPage:String = "";
+
+  activeUserSession:user= {
+    name :"",
+    contactNumber:"",
+    email:"",
+    access:"",
+    farm:0
   }
 
   // Language Change
@@ -36,4 +57,5 @@ export class DataStoreService {
     }
     return filtered;
   }
+  
 }

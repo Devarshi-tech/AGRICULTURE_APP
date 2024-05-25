@@ -1,0 +1,67 @@
+<div class="flex justify-content-center align-items-center signup-container">
+    <div class="form-card">
+        <div>
+            <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo">
+            <h2 class="mb-4">Register</h2>
+        </div>
+        <form name="loginForm" #loginForm="ngForm">
+
+            @if (!next) {
+            <div class="inputgroup mb-3">
+                <span class="inputgrouaddon mr-1">
+                    <i class="fas fa-user"></i>
+                </span>
+                <input type="text" pInputText placeholder="Name" required>
+            </div>
+
+            <div class="inputgroup mb-3">
+                <span class="inputgrouaddon mr-1">
+                    <i class="fas fa-phone"></i>
+                </span>
+                <input type="tel" pInputText placeholder="Contact Number" required>
+            </div>
+
+
+            <div class="inputgroup mb-3">
+                <span class="inputgrouaddon mr-1">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" pInputText placeholder="Password" required>
+            </div>
+            <button (click)="next=true" pButton pRipple class="button-primary" style="border-radius: 5px;">Next</button>
+            }
+            @else {
+            <div class="inputgroup mb-3">
+                <span class="inputgrouaddon mr-1">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <input type="email" pInputText placeholder="Email" required>
+            </div>
+
+            <div class="inputgroup mb-3">
+                <span class="inputgrouaddon mr-1">
+                    <i class="fas fa-user"></i>
+                </span>
+                <input type="number" pInputText placeholder="Farm" required>
+            </div>
+            <button (click)="next=false" pButton pRipple class="bg-gray-700 mr-2"
+                style="border-radius: 5px;">Back</button>
+            <button (click)="next=true" pButton pRipple class=" ml-2"
+                style="border-radius: 5px;background-color: #198754;">Done</button>
+
+            <!-- <button type="reset" pButton pRipple class="bg-gray-700 mr-2" style="border-radius: 5px;">Cancel</button>
+            <button type="submit" pButton pRipple class=" ml-2"
+                style="border-radius: 5px;background-color: #198754;">Login</button> -->
+
+            }
+
+
+
+
+
+        </form>
+        <!-- <a routerLink="/">Skip</a> -->
+    </div>
+
+</div>
+<p>Already have an account <a routerLink="/login">Login</a></p>

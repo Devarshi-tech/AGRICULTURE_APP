@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 
 // user interface 
-interface user {
-  name: String,
-  access: String,
-  contactNumber: String,
-  email:String,
-  farm:number
-};
+// interface user {
+//   name: String,
+//   access: String,
+//   contactNumber: String,
+//   email:String,
+//   farm:number
+// };
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStoreService {
+  isLoggedIn: boolean = false;
+  isUserEditFlag:boolean = false;
 
   constructor() { }
 
@@ -27,7 +29,7 @@ export class DataStoreService {
 
   currentPage:String = "";
 
-  activeUserSession:user= {
+  activeUserSession:any= {
     name :"",
     contactNumber:"",
     email:"",

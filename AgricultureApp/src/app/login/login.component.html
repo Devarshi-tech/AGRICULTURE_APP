@@ -4,22 +4,37 @@
             <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo">
             <h2 class="mb-4">Login</h2>
         </div>
+        <p style="color: red;">{{mandatoryValidationMessage}}</p>
+        <!-- <p style="color: green;">{{loginSuccessMessage}}</p> -->
+        
         <form name="loginForm" #loginForm="ngForm">
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-phone"></i>
                 </span>
-                <input type="tel" pInputText placeholder="Contact Number" required>
+                <input [(ngModel)]="loginData.contactNumber" 
+                type="tel" 
+                pInputText placeholder="Contact Number" 
+                name="contactNumber"
+                #contactNumber="ngModel"
+                required>
             </div>
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-lock"></i>
                 </span>
-                <input type="password" pInputText placeholder="Password" required>
+                <input 
+                type="password" 
+                [(ngModel)]="loginData.password"
+                name="password"
+                autocomplete="password"
+                #password="ngModel"
+                pInputText placeholder="Password" required>
             </div>
             <button routerLink="/" type="reset" pButton pRipple class="bg-gray-700 mr-2"
                 style="border-radius: 5px;">Cancel</button>
-            <button type="submit" pButton pRipple class=" ml-2"
+            <button (click)="formSubmit(loginData)"
+            type="submit" pButton pRipple class=" ml-2"
                 style="border-radius: 5px;background-color: #198754;">Login</button>
 
 

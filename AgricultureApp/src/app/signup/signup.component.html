@@ -2,23 +2,29 @@
     <div class="form-card">
         <div>
             <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo">
-            <h2 class="mb-4">Register</h2>
+            <h2 class="mb-4">
+                @if (datastore.isUserEditFlag) {
+                    Edit Details
+                }@else {
+                    Register
+                }
+            </h2>
         </div>
-        <form name="loginForm" #loginForm="ngForm">
+        <form name="signupForm" #signupForm="ngForm">
 
             @if (!next) {
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-user"></i>
                 </span>
-                <input type="text" pInputText placeholder="Name" required>
+                <input name="name" [(ngModel)]="user.name" type="text" pInputText placeholder="Name" required>
             </div>
 
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-phone"></i>
                 </span>
-                <input type="tel" pInputText placeholder="Contact Number" required>
+                <input name="contactNumber" [(ngModel)]="user.contactNumber" type="tel" pInputText placeholder="Contact Number" required>
             </div>
 
 
@@ -26,27 +32,30 @@
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-lock"></i>
                 </span>
-                <input type="password" pInputText placeholder="Password" required>
+                <input name="password" autocomplete="password" [(ngModel)]="user.password" type="password" pInputText placeholder="Password" required>
             </div>
-            <button (click)="next=true" pButton pRipple class="button-primary" style="border-radius: 5px;">Next</button>
+            <!-- <button (click)="next=true;signupForm.valid" pButton pRipple class="button-primary" style="border-radius: 5px;">Next</button> -->
+            <button routerLink="/" pButton pRipple class="bg-gray-700 mr-2"
+                style="border-radius: 5px;">Back</button>
+            <button (click)="next=true;signupForm.valid" pButton pRipple class="button-primary" style="border-radius: 5px;">Next</button>
             }
             @else {
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-envelope"></i>
                 </span>
-                <input type="email" pInputText placeholder="Email" required>
+                <input name="email" [(ngModel)]="user.email" type="email" pInputText placeholder="Email">
             </div>
 
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-user"></i>
                 </span>
-                <input type="number" pInputText placeholder="Farm" required>
+                <input name="farm" [(ngModel)]="user.farm" type="number" pInputText placeholder="Farm" >
             </div>
             <button (click)="next=false" pButton pRipple class="bg-gray-700 mr-2"
                 style="border-radius: 5px;">Back</button>
-            <button (click)="next=true" pButton pRipple class=" ml-2"
+            <button (click)="next=true;createUser(user)" pButton pRipple class=" ml-2"
                 style="border-radius: 5px;background-color: #198754;">Done</button>
 
             <!-- <button type="reset" pButton pRipple class="bg-gray-700 mr-2" style="border-radius: 5px;">Cancel</button>
@@ -56,12 +65,11 @@
             }
 
 
-
-
-
         </form>
         <!-- <a routerLink="/">Skip</a> -->
     </div>
 
 </div>
-<p>Already have an account <a routerLink="/login">Login</a></p>
+@if (!(datastore.isUserEditFlag)) {
+    <p>Already have an account <a routerLink="/login">Login</a></p>
+}

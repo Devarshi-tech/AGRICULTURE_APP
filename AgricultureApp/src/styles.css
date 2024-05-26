@@ -7,6 +7,12 @@
     border-radius: 50%;
 }
 
+.userProfileImg{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
 .searchInputBox{
     width: 50% !important;
     display: unset;
@@ -60,6 +66,10 @@ table ,.accordion-button{
 }
 .footer-icon-share{
     background-image: url(../src/assets/home.svg);
+}
+
+.footer-icon-gear-solid{
+    background-image: url(../src/assets/gear-solid.svg);
 }
 
 .icon-smile{

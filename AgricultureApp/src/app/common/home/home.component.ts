@@ -35,6 +35,9 @@ export class HomeComponent {
     //Home Component Active
     this.dataStore.activeFooterIconNumber = 0;
 
+    this.dataStore.isLoggedIn = this.agricultureService.isLoggedIn();
+    // console.log(this.agricultureService.isLoggedIn());
+
     this.dataStore.currentPage=""; // reseting current page location
 
     const currentDate = new Date();

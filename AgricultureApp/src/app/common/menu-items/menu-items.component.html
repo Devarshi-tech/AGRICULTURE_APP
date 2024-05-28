@@ -66,9 +66,10 @@
 
         <div class="icon-container">
             @if($index==this.dataStore.activeFooterIconNumber){
-            <i class="fa-solid fa-sort-up fa-xs mb-1" style="color: #135736;"></i>
+            <i class="fa-solid fa-sort-up fa-xs mb-1" style="color: #198754;"></i>
             }
-            <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"></i>
+            <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"
+              [style.color]="!($index==this.dataStore.activeFooterIconNumber)?'#198754':'black'"></i>
 
         </div>
         }

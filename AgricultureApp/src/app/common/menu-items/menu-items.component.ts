@@ -26,11 +26,11 @@ export class MenuItemsComponent {
   globalSearch: String = "";
 
   menuItemsList: any = [
-    { name: "Home", iconsClassList: ["footer-icon footer-icon-home navbar-brand"], routerLink: "/home" },
-    { name: "Bhaav", iconsClassList: ["footer-icon footer-icon-indian-rupee navbar-brand"], routerLink: "/mandibhaav" },
-    { name: "Calculator", iconsClassList: ["footer-icon footer-icon-calculator navbar-brand"], routerLink: "/labourCalculator" },
-    { name: "Photos", iconsClassList: ["footer-icon footer-icon-camera navbar-brand"], routerLink: "/home" },
-    { name: "Settings", iconsClassList: ["footer-icon footer-icon-gear-solid navbar-brand"], routerLink: "/settings" },
+    { name: "Home", iconsClassList: ["fas fa-home navbar-brand"], routerLink: "/home" },
+    { name: "Bhaav", iconsClassList: ["fas fa-indian-rupee navbar-brand"], routerLink: "/mandibhaav" },
+    { name: "Calculator", iconsClassList: ["fas fa-calculator navbar-brand"], routerLink: "/labourCalculator" },
+    { name: "Farm Manage", iconsClassList: ["fa-solid fa-wheat-awn navbar-brand"], routerLink: "/home" },
+    { name: "Settings", iconsClassList: ["fas fa-gear-solid navbar-brand"], routerLink: "/settings" },
 
   ];
   isLoggedIn: boolean = false;

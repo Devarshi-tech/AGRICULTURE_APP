@@ -44,12 +44,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authHttpReq -> authHttpReq
 
                         .requestMatchers("/user/create-user", "/auth/login", "/market/fetchMarketListForDistrict",
-                                "/market/fetchMarketPriceList", "/market/fetchMarketPriceList")
+                                "/market/fetchMarketPriceList", "/market/fetchMarketPriceList",
+                                "/user/unique-user","/user/send-otp","/user/verify-otp")
                         .permitAll()
                         .requestMatchers("/user/testing-normal-user", "/user/testing-normal-user1", "/user/logged-in-user")
                         .hasRole("NORMAL")
                         .requestMatchers("/user/testing-admin-user", "/user/logged-in-user")
                         .hasRole("ADMIN")
+                        .requestMatchers("/labour/add")
+                        .authenticated()
                         .anyRequest()
                         .authenticated())
                         

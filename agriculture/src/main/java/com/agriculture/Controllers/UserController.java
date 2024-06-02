@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.agriculture.Models.User;
+// import com.agriculture.Services.CustomUserDetailsService;
 import com.agriculture.Services.UserService;
 
 @RestController
@@ -20,6 +22,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    // @Autowired
+    // private CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
+    AuthController authController;
 
     /**
      * Tesing for normal user
@@ -55,8 +63,14 @@ public class UserController {
     }
 
     @PostMapping("/create-user")
-    public String createUser(@RequestBody User user) {
-        return userService.createUser(user);
+    public String createUser(@RequestBody User user, @RequestHeader("isUserEditFlag") Boolean isUserEditFlag) {
+        return userService.createUser(user, isUserEditFlag);
     }
+
+    @PostMapping("/unique-user")
+    public Boolean uniqueUserValidation(@RequestBody User user) {
+        return userService.uniqueUserValidation(user);
+    }
+
 
 }

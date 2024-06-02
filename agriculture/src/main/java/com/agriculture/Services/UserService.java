@@ -22,14 +22,25 @@ public class UserService {
         return new BCryptPasswordEncoder();
     }
 
-    public String createUser(User user) {
-        user.setPassword(passwordEncoder().encode(user.getPassword()));
+    public String createUser(User user,Boolean isUserEditFlag) {
+        if(isUserEditFlag){
+            user.setPassword(user.getPassword());
+        }
+        else{
+            user.setPassword(passwordEncoder().encode(user.getPassword()));
+        }
+        
         Role role = new Role();
 
         role.setRoleid(2);
         user.setRole(role);
         userRepository.save(user);
         return user.getContactNumber();
+    }
+
+    public Boolean uniqueUserValidation(User user){
+        User u1  = userRepository.findByContactNumber(user.getContactNumber());
+        return u1==null;
     }
 
 }

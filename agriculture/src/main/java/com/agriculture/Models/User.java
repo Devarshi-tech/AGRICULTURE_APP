@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
+// import java.util.;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+// import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -35,19 +35,11 @@ public class User implements UserDetails {
 
     private String password;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    private Integer oneTimePassword;
 
-    // @ManyToMany     
-    // // @JoinColumn(name = "roleid", referencedColumnName = "roleid")
-    // @JoinTable(
-    //     name = "user_roles",
-    //     joinColumns = @JoinColumn(name = "userid"),
-    //     inverseJoinColumns = @JoinColumn(name = "roleid")
-    // )
-    // // private Role role;
-    // private Set<Role> roles;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user")
+    private List<Labour> labours;
 
     @ManyToOne
     @JoinColumn(name = "roleid", referencedColumnName = "roleid")
@@ -62,6 +54,10 @@ public class User implements UserDetails {
     private String contactNumber;
 
     private String email;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Long getUserid() {
         return userid;
@@ -130,12 +126,15 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Long userid, String name, Integer farm, String password, Role role, Boolean isActive,
-            Date createdDate, Date modifiedDate, String contactNumber, String email) {
+    
+    public User(Long userid, String name, Integer farm, String password, Integer oneTimePassword, List<Labour> labours,
+            Role role, Boolean isActive, Date createdDate, Date modifiedDate, String contactNumber, String email) {
         this.userid = userid;
         this.name = name;
         this.farm = farm;
         this.password = password;
+        this.oneTimePassword = oneTimePassword;
+        this.labours = labours;
         this.role = role;
         this.isActive = isActive;
         this.createdDate = createdDate;
@@ -144,10 +143,12 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Collection<GrantedAuthority> getAuthorities() {
         
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        @SuppressWarnings("rawtypes")
+        List<GrantedAuthority> authorities = new ArrayList();
         System.out.println(role.getRolename());
         authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRolename()));
         return authorities;
@@ -189,6 +190,22 @@ public class User implements UserDetails {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Integer getOneTimePassword() {
+        return oneTimePassword;
+    }
+
+    public void setOneTimePassword(Integer oneTimePassword) {
+        this.oneTimePassword = oneTimePassword;
+    }
+
+    public List<Labour> getLabours() {
+        return labours;
+    }
+
+    public void setLabours(List<Labour> labours) {
+        this.labours = labours;
     }
 
 }

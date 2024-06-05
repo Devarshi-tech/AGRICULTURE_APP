@@ -5,11 +5,12 @@ import { AgricultureService } from '../../services/agriculture.service';
 import { DatePipe } from '@angular/common';
 import { CarouselComponent } from '../carousel/carousel.component';
 import { DataStoreService } from '../../services/data-store.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, WeatherComponent, CarouselComponent],
+  imports: [HeaderComponent, WeatherComponent, CarouselComponent,RouterLink, RouterLinkActive],
   providers: [DatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -39,6 +40,7 @@ export class HomeComponent {
     // console.log(this.agricultureService.isLoggedIn());
 
     this.dataStore.currentPage=""; // reseting current page location
+    this.dataStore.showHeaderFooter = true;
 
     const currentDate = new Date();
 
@@ -57,6 +59,10 @@ export class HomeComponent {
         this.getLatestMandiRates(favCommoditiesList, this.dataStore.currentLocation);
       }, 1000);
     }
+
+    setTimeout(() => {
+      this.dataStore.messageAlert = "";
+    }, 2000);
 
   }
 

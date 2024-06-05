@@ -6,6 +6,7 @@ import { LaborCalculatorComponent } from './common/labour-calculator/labour-calc
 import { WeatherForecastComponent } from './common/weather-forecast/weather-forecast.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { FarmManagerDashboardComponent } from './farm-manager-dashboard/farm-manager-dashboard.component';
 
 
 export const routes: Routes = [
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path:'labourCalculator',component:LaborCalculatorComponent},
     {path:'weatherForecast',component:WeatherForecastComponent},
     {path:'login',component:LoginComponent},
-    {path:'signup',component:SignupComponent}
+    {path:'signup',component:SignupComponent},
+    {path:'farm-manager-dashboard',component:FarmManagerDashboardComponent}
 ]

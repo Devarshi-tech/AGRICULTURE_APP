@@ -1,3 +1,13 @@
+<div style="box-shadow: 5px black;" >
+    {{dataStore.messageAlert}}
+</div>
+@if (!dataStore.isLoggedIn) {
+    <div class="m-2" style="color: #198754;">
+        Register now to explore more!
+    <a routerLink="/signup" (click)="dataStore.showHeaderFooter=false">Click here</a>
+    </div>
+}
+
 <!-- Weather Starts -->
 <div class="grid">
     <div class="col-12">

@@ -1,0 +1,143 @@
+<div class="grid">
+    <div class="justify-content-center">
+        <h5>Labour Management</h5>
+    </div>
+    <div class="col-12">
+
+        <div class="text-center p-1 border-round-sm font-bold">
+
+
+            @if (dataStore.isLoggedIn) {
+            <div (click)="visible=true" class="p-1 mb-1 mt-2"
+                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 20%;margin-left: auto;font-size: 0.8rem;">
+                <i class="fas fa-plus"></i>Add
+            </div>
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+                        <th scope="col" style="width: 50px;">Name</th>
+                        <th scope="col" style="width: 50px;">Days Worked</th>
+                        <th scope="col" style="width: 50px;">Amount Paid</th>
+                        <th scope="col" style="width: 50px;">Remaining Amount</th>
+                        <th scope="col"  style="width: 50px;"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (labour of labourers; track $index) {
+
+                    <tr>
+                        <td>{{ labour.name }}</td>
+                        <td>{{ labour.daysWorked }}</td>
+                        <td>{{ labour.payments[0].amount }}</td>
+                        <td>100</td>
+
+                        <td style="padding: 0;" (click)="showLabourActions=!showLabourActions;rowNumber=$index">
+                            <div class="mt-2" style="border: 1px solid #198754;border-radius: 10px;color: black;width: 35px;">
+                                @if (showLabourActions && rowNumber==$index) {<i class="fas fa-xmark"></i>}
+                                @else {
+                                <i class="fas fa-arrow-down"></i>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                    @if (showLabourActions && rowNumber ==$index) {
+                    <tr class="gridActionsRow">
+                        <!-- <td></td> -->
+                        <td class="gridActionButtons">
+                            <div class="mt-2"
+                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;margin-left: 20%;"><i
+                                    class="fas fa-plus"></i></div>
+                        </td>
+                        <td class="">
+                            <div class="mt-2"
+                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;margin-left: 20%;"><i
+                                    class="">Pay</i></div>
+                        </td>
+                        <td class="">
+                            <div class="mt-2"
+                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;margin-left: 25%;"><i
+                                    class="fas fa-edit"></i></div>
+                        </td>
+
+                        <td class="">
+                            <div class="mt-2"
+                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 65px;"><i
+                                    class="">Attendance</i></div>
+                        </td>
+
+                        <td class="">
+                            <div class="mt-2"
+                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;"><i
+                                    class="fas fa-trash-can"></i></div>
+                        </td>
+
+                    </tr>
+                    }
+
+                    }
+                </tbody>
+            </table>
+            }
+
+            @else{
+
+            <div>
+                <p>
+                    Login to experience Labour management to handle all the labourer and their payments.
+                    <a routerLink="/login" (click)="dataStore.showHeaderFooter=false">Click here</a>
+                </p>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Add new Labour popup starts -->
+<div class=" flex justify-content-center">
+
+    <p-dialog header="Add new Labour" [modal]="true" [(visible)]="visible" [style]="{ width: '20rem' }">
+
+
+        <div class="overlay-content mt-3">
+
+            <form name="loginForm" #loginForm="ngForm">
+                <div class="inputgroup mb-3">
+
+                    <input [(ngModel)]="loginData.labourName" type="tel" pInputText placeholder="Labour Name"
+                        name="labourName" #labourName="ngModel" required>
+                </div>
+
+                <div class="inputgroup mb-3">
+
+                    <input [(ngModel)]="loginData.dailyRate" type="number" pInputText placeholder="Daily Rate"
+                        name="dailyRate" #dailyRate="ngModel" required>
+                </div>
+
+
+                <div class="inputgroup mb-3">
+
+                    <input type="password" [(ngModel)]="loginData.password" name="password" autocomplete="password"
+                        #password="ngModel" pInputText placeholder="Password">
+                </div>
+
+
+                <div class="inputgroup mb-3">
+                    <button type="reset" pButton pRipple class="mr-2"
+                        style="border-radius: 5px;background-color: #198754;margin-left: 55%;">Add</button>
+                </div>
+
+            </form>
+
+            <div>
+
+            </div>
+        </div>
+
+    </p-dialog>
+</div>
+<!-- Add new Labour popup ends -->

@@ -4,37 +4,51 @@
             <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo">
             <h2 class="mb-4">Login</h2>
         </div>
-        <p style="color: red;">{{mandatoryValidationMessage}}</p>
+        <p [classList]="mandatoryMessageClassList">{{mandatoryValidationMessage!=""?mandatoryValidationMessage:dataStore.messageAlert}}</p>
+        <!-- <p style="color: red;">{{mandatoryValidationMessage}}</p> -->
         <!-- <p style="color: green;">{{loginSuccessMessage}}</p> -->
-        
+
         <form name="loginForm" #loginForm="ngForm">
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-phone"></i>
                 </span>
-                <input [(ngModel)]="loginData.contactNumber" 
-                type="tel" 
-                pInputText placeholder="Contact Number" 
-                name="contactNumber"
-                #contactNumber="ngModel"
-                required>
+                <input [(ngModel)]="loginData.contactNumber" type="tel" pInputText placeholder="Contact Number"
+                    name="contactNumber" #contactNumber="ngModel" required>
             </div>
+
+            @if (!isLoginByOTP) {
             <div class="inputgroup mb-3">
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-lock"></i>
                 </span>
-                <input 
-                type="password" 
-                [(ngModel)]="loginData.password"
-                name="password"
-                autocomplete="password"
-                #password="ngModel"
-                pInputText placeholder="Password" required>
+                <input type="password" [(ngModel)]="loginData.password" name="password" autocomplete="password"
+                    #password="ngModel" pInputText placeholder="Password">
             </div>
+            }
+
+            @else {
+            <!-- OTP starts -->
+            <div class="inputgroup mb-3">
+                <span class="inputgrouaddon mr-1">
+                    <i class="fas fa-check"></i>
+                </span>
+                <input type="number" [(ngModel)]="oneTimePassword" name="oneTimePassword" autocomplete="oneTimePassword"
+                    #oneTimePassword="ngModel" pInputText placeholder="OTP">
+            </div>
+            <!-- OTP ends -->
+            }
+
+            @if (loading) {
+                <i class="fas fa-spinner fa-spin" ></i>
+            }
+
+            <!-- <div>
+                <p style="color: blue;font-size: 0.85rem;" (click)="sendOTP()">Login by Send OTP! </p>
+            </div> -->
             <button routerLink="/" type="reset" pButton pRipple class="bg-gray-700 mr-2"
                 style="border-radius: 5px;">Cancel</button>
-            <button (click)="formSubmit(loginData)"
-            type="submit" pButton pRipple class=" ml-2"
+            <button (click)="formSubmit(loginData)" type="submit" pButton pRipple class=" ml-2"
                 style="border-radius: 5px;background-color: #198754;">Login</button>
 
 
@@ -42,14 +56,14 @@
 
         <div>
             <!-- <p>Create new account <a routerLink="/signup">Sign Up</a></p> -->
-            <button type="submit" pButton pRipple class="ml-2 mt-3 justify-content-center"
+            <button type="submit" pButton pRipple class="ml-2 mt-3 justify-content-center" (click)="dataStore.isUserEditFlag=false"
                 style="border-radius: 5px; background-color: #70a3ea;height: 40px;" routerLink="/signup">
                 <p class="m-0">Create new account</p>
             </button>
 
 
             <div class="mt-3">
-                <a routerLink="/" >Skip</a>
+                <a routerLink="/">Skip</a>
             </div>
         </div>
     </div>

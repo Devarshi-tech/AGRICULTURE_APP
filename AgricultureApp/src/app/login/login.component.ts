@@ -32,15 +32,20 @@ export class LoginComponent {
   }
 
   mandatoryValidationMessage: String = "";
+  isLoginByOTP:boolean = false;
+  oneTimePassword:number = 0;
+  loading:boolean = false;
 
 
   formSubmit(loginData: any) {
     if (loginData.contactNumber.trim() == '' || loginData.contactNumber == null) {
       this.mandatoryValidationMessage = "Contact number is required !!";
+      this.mandatoryMessageClassList = ["text-red-700"];
       return;
     }
     if (loginData.password.trim() == '' || loginData.password == null) {
       this.mandatoryValidationMessage = "Password is required !!";
+      this.mandatoryMessageClassList = ["text-red-700"];
       return;
     }
 
@@ -53,18 +58,39 @@ export class LoginComponent {
         this.agricultureService.setUser(data);
         
       })
+      this.dataStore.messageAlert = "Logged in successfully!";
+      this.dataStore.messageAlertSevierity = ["text-teal-700"];
       this.router.navigate([""]);
+
     },
       (error) => {
         this.mandatoryValidationMessage = "Invalid credentials !!";
+        this.mandatoryMessageClassList = ["text-red-700"];
         console.log(error);
       })
 
 
   }
 
+  mandatoryMessageClassList:string[] = [];
+
   ngOninit(){
+
+    this.dataStore.messageAlert= "";
    
   }
+
+  // sendOTP(){
+  //   this.isLoginByOTP  = true;
+  //   this.loading = true;
+  //   this.agricultureService.generateOTP(this.loginData.contactNumber).subscribe(
+  //     (data:any)=>{
+  //       this.mandatoryValidationMessage = data;
+  //       if(data!=null && data!= ""){
+  //         this.loading= false;
+  //       }
+  //     }
+  //   )
+  // }
 
 }

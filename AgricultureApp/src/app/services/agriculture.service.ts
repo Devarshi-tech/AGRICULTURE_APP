@@ -142,8 +142,17 @@ export class AgricultureService {
     return this.httpClient.get(this.url + "auth/current-user", { headers });
   }
 
-  public createUser(user: any) {
-    return this.httpClient.post(this.url + "user/create-user", user);
+  public createUser(user: any,isUserEditFlag:boolean,isPasswordChanged:boolean) {
+    const headers = new HttpHeaders()
+      .set('isUserEditFlag', isUserEditFlag.toString())
+      .set('isPasswordChanged',isPasswordChanged.toString());
+    return this.httpClient.post(this.url + "user/create-user", user,{headers});
   }
+
+  public uniqueUserValidation(user:any){
+    return this.httpClient.post(this.url + "user/unique-user" ,user)
+  }
+
+ 
 
 }

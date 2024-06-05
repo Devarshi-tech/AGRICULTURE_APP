@@ -10,6 +10,21 @@
                 }
             </h2>
         </div>
+        <!-- <p style="color: red;">{{mandatoryValidationMessage}}</p>
+        @if (contactIsUnique==true) {
+            <p style="color: rgb(18, 208, 18);font-size: 0.8rem;">Verified: Contact is unique&nbsp;<i class="fas fa-check"></i></p>
+            
+        }
+        @else if(contactIsUnique==false) {
+            <p style="color: red;font-size: 0.8rem;">Contact number already exists !!</p>
+        } -->
+
+        <p [classList]="mandatoryMessageClassList" >{{mandatoryValidationMessage}}</p>
+        <div class="mt-1">
+            @if (loading) {
+                <i class="fas fa-spinner fa-spin" ></i>
+            }
+        </div>
         <form name="signupForm" #signupForm="ngForm">
 
             @if (!next) {
@@ -17,7 +32,7 @@
                 <span class="inputgrouaddon mr-1">
                     <i class="fas fa-user"></i>
                 </span>
-                <input name="name" [(ngModel)]="user.name" type="text" pInputText placeholder="Name" required>
+                <input name="name" [(ngModel)]="user.name" type="text" pInputText placeholder="Name" >
             </div>
 
             <div class="inputgroup mb-3">
@@ -25,6 +40,7 @@
                     <i class="fas fa-phone"></i>
                 </span>
                 <input name="contactNumber" [(ngModel)]="user.contactNumber" type="tel" pInputText placeholder="Contact Number" required>
+                
             </div>
 
 
@@ -34,10 +50,11 @@
                 </span>
                 <input name="password" autocomplete="password" [(ngModel)]="user.password" type="password" pInputText placeholder="Password" required>
             </div>
+
             <!-- <button (click)="next=true;signupForm.valid" pButton pRipple class="button-primary" style="border-radius: 5px;">Next</button> -->
             <button routerLink="/" pButton pRipple class="bg-gray-700 mr-2"
                 style="border-radius: 5px;">Back</button>
-            <button (click)="next=true;signupForm.valid" pButton pRipple class="button-primary" style="border-radius: 5px;">Next</button>
+            <button (click)="uniqueUserValidation(user)" pButton pRipple class="button-primary" style="border-radius: 5px;">Next</button>
             }
             @else {
             <div class="inputgroup mb-3">

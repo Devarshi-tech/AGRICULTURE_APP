@@ -14,7 +14,10 @@ import { Injectable } from '@angular/core';
 })
 export class DataStoreService {
   isLoggedIn: boolean = false;
-  isUserEditFlag:boolean = false;
+  isUserEditFlag: boolean = false;
+  messageAlert: string = "";
+  messageAlertSevierity: string[] = [];
+  showHeaderFooter: boolean = true;
 
   constructor() { }
 
@@ -27,14 +30,14 @@ export class DataStoreService {
     state: "Madhya Pradesh",
   }
 
-  currentPage:String = "";
+  currentPage: String = "";
 
-  activeUserSession:any= {
-    name :"",
-    contactNumber:"",
-    email:"",
-    access:"",
-    farm:0
+  activeUserSession: any = {
+    name: "",
+    contactNumber: "",
+    email: "",
+    access: "",
+    farm: 0
   }
 
   // Language Change
@@ -59,5 +62,5 @@ export class DataStoreService {
     }
     return filtered;
   }
-  
+
 }

@@ -1,7 +1,7 @@
 <!-- Header Starts -->
 @if (isHeader) {
-<nav class="navbar fixed-top header d-flex flex-row">
-    @if (!(dataStore.currentPage=='login')) {
+<nav class="navbar fixed-top d-flex flex-row">
+    @if ((dataStore.showHeaderFooter)) {
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="">
             <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo">
@@ -22,7 +22,7 @@
         </button>
 
         }@else {
-        <button (click)="dataStore.currentPage='login'" class="ml-1 mr-1 btn btn-outline-success">
+        <button (click)="dataStore.showHeaderFooter=false" class="ml-1 mr-1 btn btn-outline-success">
             <i routerLink="/login">Login</i>
         </button>
         }
@@ -32,7 +32,7 @@
 
 
     <!-- Web options starts -->
-    @if (screenWidth >=600 && !(dataStore.currentPage=="login")) {
+    @if (screenWidth >=600 && !(dataStore.showHeaderFooter)) {
 
     <div class="container-fluid">
 
@@ -54,7 +54,7 @@
 <!-- Header Ends -->
 
 <!-- Mobile Footer Starts -->
-@if (screenWidth<600 && isFooter && !(dataStore.currentPage=="login" )) { <nav
+@if (screenWidth<600 && isFooter && (dataStore.showHeaderFooter )) { <nav
     class="navbar fixed-bottom m-2 bg-body-tertiary">
 
     <div class="container-fluid">
@@ -68,10 +68,15 @@
             @if($index==this.dataStore.activeFooterIconNumber){
             <i class="fa-solid fa-sort-up fa-xs mb-1" style="color: #198754;"></i>
             }
-            <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"
-              [style.color]="!($index==this.dataStore.activeFooterIconNumber)?'#198754':'black'"></i>
+
+            <!-- @if(dataStore.isLoggedIn){ -->
+                <i [classList]="item.iconsClassList" [routerLink]="item.routerLink"
+                [style.color]="!($index==this.dataStore.activeFooterIconNumber)?'#198754':'black'"></i>
+            <!-- } -->
+
 
         </div>
+       
         }
 
     </div>
@@ -80,7 +85,7 @@
     <!-- Mobile footer Ends -->
 
 
-    <div class="card flex justify-content-center">
+    <div class=" flex justify-content-center">
         <!-- <p-button (click)="showDialog()" label="Show" /> -->
         <p-dialog header="{{user.name==''||user.name==null?'No name!':user.name}}" [modal]="true" [(visible)]="visible"
             [style]="{ width: '20rem' }">
@@ -117,7 +122,7 @@
                 <button (click)="visible = false;logOut()" type="submit" pButton pRipple class=" mr-2 bg-gray-700"
                     style="border-radius: 5px;">Logout</button>
 
-                <button (click)="visible = false;dataStore.currentPage='login';dataStore.isUserEditFlag=true"
+                <button (click)="visible = false;dataStore.showHeaderFooter=false;dataStore.isUserEditFlag=true"
                     type="submit" pButton pRipple class=" ml-2" style="border-radius: 5px;background-color: #198754;"
                     routerLink="/signup">Edit  </button>
             </div>

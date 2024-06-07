@@ -9,18 +9,12 @@ import { DataStoreService } from '../../services/data-store.service';
   styleUrl: './settings.component.css'
 })
 export class SettingsComponent {
-  // languageChangeConfirmation:boolean = false;
+
   constructor(public dataStore:DataStoreService){}
 
-  // changeLanguage(language:any){
-  //   if(language=="Hindi"){
-  //     this.dataStore.isHindi = true;
-  //     this.dataStore.isEnglish = false;
-  //   }
-  //   else{
-  //     this.dataStore.isHindi = false;
-  //     this.dataStore.isEnglish = true;
-  //   }
-  // }
+  ngOnInit(){
+    this.dataStore.activeFooterIconNumber= 4;
+  }
+
 
 }

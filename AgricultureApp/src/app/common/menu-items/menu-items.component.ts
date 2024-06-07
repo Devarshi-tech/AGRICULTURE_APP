@@ -30,7 +30,7 @@ export class MenuItemsComponent {
     { name: "Bhaav", iconsClassList: ["fas fa-indian-rupee navbar-brand"], routerLink: "/mandibhaav" },
     { name: "Calculator", iconsClassList: ["fas fa-calculator navbar-brand"], routerLink: "/labourCalculator" },
     { name: "Farm Manage", iconsClassList: ["fa-solid fa-wheat-awn navbar-brand"], routerLink: "/farm-manager-dashboard" },
-    { name: "Settings", iconsClassList: ["fas fa-gear-solid navbar-brand"], routerLink: "/settings" },
+    { name: "Settings", iconsClassList: ["fas fa-gear navbar-brand"], routerLink: "/settings" },
 
   ];
   isLoggedIn: boolean = false;

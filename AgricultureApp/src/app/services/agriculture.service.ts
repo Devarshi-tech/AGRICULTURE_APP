@@ -6,8 +6,11 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class AgricultureService {
+  
+  // url: string = "http://localhost:8080/";
+  url: string = "http://13.49.201.250:8080/";
+  // url: string = "http://jayshriramagriculture.xyz:8080/";
 
-  url: string = "http://localhost:8080/";
   // url: string = "http://localhost:8081/market/"; // wrong url added just to avoid frquent backend calls 
 
   // url: string = "http://3.227.166.208:8080/market/";

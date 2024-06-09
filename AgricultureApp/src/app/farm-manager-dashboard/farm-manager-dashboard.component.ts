@@ -42,7 +42,7 @@ export class FarmManagerDashboardComponent {
   visible:boolean = false;
   showLabourActions:boolean = false;
   rowNumber:number=0;
-  loginData:any={};
+  labour:Labour | any = {};
 
   payments:Payment[] = [
     {

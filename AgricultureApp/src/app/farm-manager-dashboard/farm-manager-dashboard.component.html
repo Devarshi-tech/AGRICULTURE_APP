@@ -108,27 +108,27 @@
             <form name="loginForm" #loginForm="ngForm">
                 <div class="inputgroup mb-3">
 
-                    <input [(ngModel)]="loginData.labourName" type="tel" pInputText placeholder="Labour Name"
+                    <input [(ngModel)]="labour.labourName" type="tel" pInputText placeholder="Labour Name"
                         name="labourName" #labourName="ngModel" required>
                 </div>
 
                 <div class="inputgroup mb-3">
 
-                    <input [(ngModel)]="loginData.dailyRate" type="number" pInputText placeholder="Daily Rate"
+                    <input [(ngModel)]="labour.dailyRate" type="number" pInputText placeholder="Daily Rate"
                         name="dailyRate" #dailyRate="ngModel" required>
                 </div>
 
 
                 <div class="inputgroup mb-3">
 
-                    <input type="password" [(ngModel)]="loginData.password" name="password" autocomplete="password"
-                        #password="ngModel" pInputText placeholder="Password">
+                    <input type="number" [(ngModel)]="labour.advancePayment" name="advancePayment" autocomplete="advancePayment"
+                        #advancePayment="ngModel" pInputText placeholder="Advance Payment">
                 </div>
 
 
                 <div class="inputgroup mb-3">
                     <button type="reset" pButton pRipple class="mr-2"
-                        style="border-radius: 5px;background-color: #198754;margin-left: 55%;">Add</button>
+                        style="border-radius: 5px;background-color: #198754;margin-left: 65%;">Add</button>
                 </div>
 
             </form>

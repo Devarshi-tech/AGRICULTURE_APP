@@ -1,0 +1,12 @@
+{
+  "routes": [
+    "/farm-manager-dashboard",
+    "/home",
+    "/labourCalculator",
+    "/login",
+    "/mandibhaav",
+    "/settings",
+    "/signup",
+    "/weatherForecast"
+  ]
+}

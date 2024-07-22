@@ -1,19 +1,93 @@
-.homeComponent{
+.homeComponent {
     width: 100%;
     height: 200px;
 }
 
-th{
+th {
     color: #198754;
 }
 
-.gridActionButtons{
+.gridActionButtons {
     justify-content: center;
     display: flex;
     flex-direction: row;
 }
 
-.gridActionsRow td div{
+.gridActionsRow td div {
     background-color: #85b8a0;
     /* color: white; */
+}
+
+:host::ng-deep .p-dialog .p-dialog-content {
+    padding: 0 10px 0 10px;
+}
+
+:host::ng-deep .p-tabview .p-tabview-panels {
+    padding: unset;
+}
+
+.addBtnLabour {
+    border: 1px solid #198754;
+    border-radius: 10px;
+    color: black;
+    font-size: 0.8rem;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+.addBtnLabour:hover {
+    border: 1px solid #198754;
+    border-radius: 10px;
+    color: black;
+    font-size: 0.8rem;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.viewBtn {
+    border: 1px solid #198754;
+    border-radius: 10px;
+    color: black;
+    width: 40px;
+    cursor: pointer;
+}
+
+.viewBtn:hover {
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    width: 40px;
+    cursor: pointer;
+    background-color: #198754;
+}
+
+.formCard {
+    width: 100% !important;
+    padding: 1rem !important;
+}
+
+:host::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+
+    color: white;
+    text-decoration: unset;
+    font-weight: unset;
+}
+
+:host::ng-deep a {
+
+    color: black;
+    text-decoration: unset;
+    /* font-weight: unset; */
+}
+
+
+:host::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background-color: #198754;
+    opacity: .9;
 }

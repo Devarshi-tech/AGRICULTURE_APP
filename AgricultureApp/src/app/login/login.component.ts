@@ -10,6 +10,7 @@ import { AuthInterceptorProviders } from '../services/auth.interceptor';
 import { DataStoreService } from '../services/data-store.service';
 import { MessagesModule } from 'primeng/messages';
 import { Message } from 'primeng/api';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ import { Message } from 'primeng/api';
 export class LoginComponent {
 
   constructor(private agricultureService: AgricultureService, public dataStore: DataStoreService,public router:Router
-  ) { }
+  ,private location:Location) { }
 
   loginData: any = {
     contactNumber: '',
@@ -56,11 +57,15 @@ export class LoginComponent {
       this.agricultureService.getCurrentUser().subscribe((data: any) => {
 
         this.agricultureService.setUser(data);
+        this.dataStore.activeUserSession = data;
         
       })
       this.dataStore.messageAlert = "Logged in successfully!";
       this.dataStore.messageAlertSevierity = ["text-teal-700"];
-      this.router.navigate([""]);
+      
+      this.dataStore.isLoggedIn = true;
+      this.dataStore.showHeaderFooter = true;
+      this.location.back();
 
     },
       (error) => {

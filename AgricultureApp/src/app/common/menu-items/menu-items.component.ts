@@ -35,10 +35,15 @@ export class MenuItemsComponent {
   ];
   isLoggedIn: boolean = false;
   user: any = {};
+  // name:string = "";
 
   ngOnInit() {
     this.dataStore.isLoggedIn = this.agrService.isLoggedIn();
-
+    // this.dataStore.activeUserSession = this.agrService.getUser();
+    // if(this.dataStore.activeUserSession===null){
+      this.dataStore.activeUserSession = this.agrService.getUser();
+    // }
+    // this.name = this.dataStore.activeUserSession.name;
   }
 
   loggedInUser() {

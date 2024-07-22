@@ -100,3 +100,13 @@ table ,.accordion-button{
       width: 90%;
     }
   }
+
+  .heading-container{
+    border: 1px solid #198754;
+    /* height: 1vh; */
+    /* box-shadow: 5px #198754; */
+  }
+
+  .card{
+    border: unset;
+  }

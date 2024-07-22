@@ -1,85 +1,136 @@
-<div class="grid">
-    <div class="justify-content-center">
-        <h5>Labour Management</h5>
-    </div>
+<!-- Labour Main Grid starts -->
+<div class="mt-2 grid mainPageGridLabour">
+
     <div class="col-12">
 
-        <div class="text-center p-1 border-round-sm font-bold">
+        <div class="text-center border-round-sm font-bold">
 
 
             @if (dataStore.isLoggedIn) {
-            <div (click)="visible=true" class="p-1 mb-1 mt-2"
-                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 20%;margin-left: auto;font-size: 0.8rem;">
-                <i class="fas fa-plus"></i>Add
-            </div>
-            <table class="table">
 
-                <thead>
+            <div class=" justify-content-center">
 
-                    <tr>
-                        <th scope="col" style="width: 50px;">Name</th>
-                        <th scope="col" style="width: 50px;">Days Worked</th>
-                        <th scope="col" style="width: 50px;">Amount Paid</th>
-                        <th scope="col" style="width: 50px;">Remaining Amount</th>
-                        <th scope="col"  style="width: 50px;"></th>
+                <div class="overlay-content">
+                    <div class="">
+                        <p>{{this.dataStore.messageAlert}}</p>
+                        <!-- Heading starts -->
+                        <div class="flex justify-content-center align-items-center ">
+                            <div class=" ">
+                                <div>
+                                    <h3>Labour Management</h3>
+                                </div>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (labour of labourers; track $index) {
-
-                    <tr>
-                        <td>{{ labour.name }}</td>
-                        <td>{{ labour.daysWorked }}</td>
-                        <td>{{ labour.payments[0].amount }}</td>
-                        <td>100</td>
-
-                        <td style="padding: 0;" (click)="showLabourActions=!showLabourActions;rowNumber=$index">
-                            <div class="mt-2" style="border: 1px solid #198754;border-radius: 10px;color: black;width: 35px;">
-                                @if (showLabourActions && rowNumber==$index) {<i class="fas fa-xmark"></i>}
-                                @else {
-                                <i class="fas fa-arrow-down"></i>
-                                }
                             </div>
-                        </td>
-                    </tr>
-                    @if (showLabourActions && rowNumber ==$index) {
-                    <tr class="gridActionsRow">
-                        <!-- <td></td> -->
-                        <td class="gridActionButtons">
-                            <div class="mt-2"
-                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;margin-left: 20%;"><i
-                                    class="fas fa-plus"></i></div>
-                        </td>
-                        <td class="">
-                            <div class="mt-2"
-                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;margin-left: 20%;"><i
-                                    class="">Pay</i></div>
-                        </td>
-                        <td class="">
-                            <div class="mt-2"
-                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;margin-left: 25%;"><i
-                                    class="fas fa-edit"></i></div>
-                        </td>
+                        </div>
+                        <!-- Heading Ends -->
+                        <!-- Add Labour Button Starts -->
+                        <div class="flex justify-content-center align-items-center ">
+                            <div (click)="visible=true" class="p-1 addBtnLabour">
+                                <i class="fas fa-plus"></i>Add New Labour
+                            </div>
+                        </div>
+                        <!-- Add Labour Button Ends -->
 
-                        <td class="">
-                            <div class="mt-2"
-                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 65px;"><i
-                                    class="">Attendance</i></div>
-                        </td>
+                        <p-tabView>
+                            @for (tab of labourGridFilter; track $index) {
+                            <p-tabPanel [header]="tab.title">
 
-                        <td class="">
-                            <div class="mt-2"
-                                style="border: 1px solid #198754;border-radius: 10px;color: black;width: 30px;"><i
-                                    class="fas fa-trash-can"></i></div>
-                        </td>
+                                @if ($index==0) {
+                                <!-- Monthly View Grid Starts -->
+                                <table class="table">
 
-                    </tr>
-                    }
+                                    <thead>
 
-                    }
-                </tbody>
-            </table>
+                                        <tr>
+                                            <th scope="col" style="width: 60px;">Name1</th>
+                                            <th scope="col" style="width: 60px;">Days Worked</th>
+                                            <th scope="col" style="width: 60px;">Amount Paid</th>
+                                            <th scope="col" style="width: 60px;">Remaining Amount</th>
+                                            <th scope="col" style="width: 60px;"></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (labour of labourers; track $index) {
+
+                                        <tr>
+                                            <td>{{ labour.labourName }}</td>
+                                            <td>{{ labour.totalPresents }}</td>
+                                            <td>{{ labour.totalAmountPaid}}</td>
+                                            <td>100</td>
+
+                                            <td style="padding: 0;"
+                                                (click)="showLabourActions=!showLabourActions;rowNumber=$index;showLabourDetails=true">
+                                                <div class="mt-2"
+                                                    style="border: 1px solid #198754;border-radius: 10px;color: black;width: 40px;cursor: pointer;">
+
+                                                    <i>view</i>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        }
+                                    </tbody>
+                                </table>
+                                }
+                                <!-- Monthly View Grid Ends -->
+
+                                @if ($index==1) {
+                                <!-- Weekly View Grid Starts -->
+                                <table class="table">
+
+                                    <thead>
+
+                                        <tr>
+                                            <th scope="col" style="width: 60px;">Name</th>
+                                            <th scope="col" style="width: 60px;">Days Worked</th>
+                                            <th scope="col" style="width: 60px;">Amount Paid</th>
+                                            <th scope="col" style="width: 60px;">Remaining Amount</th>
+                                            <th scope="col" style="width: 60px;"></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (labour of labourers; track $index) {
+
+                                        <tr>
+                                            <td>{{ labour.labourName }}</td>
+                                            <td>{{ labour.totalPresents }}</td>
+                                            <td>{{ labour.totalAmountPaid }}</td>
+                                            <td>100</td>
+
+                                            <td style="padding: 0;"
+                                                (click)="showLabourActions=!showLabourActions;rowNumber=$index;showLabourDetails=true">
+                                                <div class="mt-2 viewBtn">
+
+                                                    <i>view</i>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+
+
+                                        }
+                                    </tbody>
+                                </table>
+                                }
+                                <!-- Weekly View Grid Starts -->
+                            </p-tabPanel>
+
+                            }
+                        </p-tabView>
+
+                    </div>
+
+
+                    <div>
+
+                    </div>
+                </div>
+
+            </div>
             }
 
             @else{
@@ -95,12 +146,13 @@
         </div>
     </div>
 </div>
-
+<!-- Labour Main Grid Ends -->
 
 <!-- Add new Labour popup starts -->
 <div class=" flex justify-content-center">
 
-    <p-dialog header="Add new Labour" [modal]="true" [(visible)]="visible" [style]="{ width: '20rem' }">
+    <p-dialog [maximizable]="true" header="Add new Labour" [modal]="true" [(visible)]="visible"
+        [style]="{ width: '20rem' }">
 
 
         <div class="overlay-content mt-3">
@@ -108,26 +160,26 @@
             <form name="loginForm" #loginForm="ngForm">
                 <div class="inputgroup mb-3">
 
-                    <input [(ngModel)]="labour.labourName" type="tel" pInputText placeholder="Labour Name"
-                        name="labourName" #labourName="ngModel" required>
+                    <input [(ngModel)]="labourMainObject.labourName" type="text" pInputText placeholder="Labour Name"
+                        name="labourName" #labourName="ngModel" (click)="printLabourName(labourMainObject)">
                 </div>
-
                 <div class="inputgroup mb-3">
 
-                    <input [(ngModel)]="labour.dailyRate" type="number" pInputText placeholder="Daily Rate"
+                    <input [(ngModel)]="labourMainObject.dailyRate" type="number" pInputText placeholder="Daily Rate"
                         name="dailyRate" #dailyRate="ngModel" required>
                 </div>
 
 
                 <div class="inputgroup mb-3">
 
-                    <input type="number" [(ngModel)]="labour.advancePayment" name="advancePayment" autocomplete="advancePayment"
-                        #advancePayment="ngModel" pInputText placeholder="Advance Payment">
+                    <input type="number" [(ngModel)]="labourMainObject.advancePayment" name="advancePayment"
+                        autocomplete="advancePayment" #advancePayment="ngModel" pInputText
+                        placeholder="Advance Payment">
                 </div>
 
 
                 <div class="inputgroup mb-3">
-                    <button type="reset" pButton pRipple class="mr-2"
+                    <button type="submit" pButton pRipple class="mr-2" (click)="createLabour()"
                         style="border-radius: 5px;background-color: #198754;margin-left: 65%;">Add</button>
                 </div>
 
@@ -141,3 +193,60 @@
     </p-dialog>
 </div>
 <!-- Add new Labour popup ends -->
+
+<!-- Labour Attendance and Payment p-dialog -->
+<div class=" flex justify-content-center">
+
+    <p-dialog [maximizable]="true" header="Labour Name 1" [modal]="true" [(visible)]="showLabourDetails"
+        [style]="{ width: '20rem' }">
+
+
+        <div class="overlay-content">
+            <div class="card">
+                <p-tabView>
+                    @for (tab of tabs; track $index) { <p-tabPanel [header]="tab.title">
+                        <table class="table">
+
+                            <thead>
+
+                                <tr>
+                                    <th scope="col" style="width: 60px;">Name</th>
+                                    <th scope="col" style="width: 60px;">Days Worked</th>
+                                    <th scope="col" style="width: 60px;">Amount Paid</th>
+                                    <th scope="col" style="width: 60px;">Remaining Amount</th>
+                                    <!-- <th scope="col" style="width: 60px;"></th> -->
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <tr>
+                                    <td>name</td>
+                                    <td>daysWorked </td>
+                                    <td>payments</td>
+                                    <td>100</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </p-tabPanel>
+                    }
+                </p-tabView>
+            </div>
+            <!-- <form name="loginForm" #loginForm="ngForm"> -->
+
+
+
+
+            <!-- </form> -->
+
+            <div>
+
+            </div>
+        </div>
+
+    </p-dialog>
+</div>
+<!-- Labour Attendance and Payment p-dialog -->

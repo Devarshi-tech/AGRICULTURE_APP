@@ -7,9 +7,9 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AgricultureService {
   
-  // url: string = "http://localhost:8080/";
+  url: string = "http://localhost:8080/"; 
   // url: string = "http://13.49.201.250:8080/";
-  url: string = "http://jayshriramagriculture.xyz:8080/";
+  // url: string = "http://jayshriramagriculture.xyz:8080/";
 
   // url: string = "http://localhost:8081/market/"; // wrong url added just to avoid frquent backend calls 
 
@@ -156,6 +156,15 @@ export class AgricultureService {
     return this.httpClient.post(this.url + "user/unique-user" ,user)
   }
 
+  /**
+   * Create New Labour for Authenticated User
+   */
+  public createLabour(labourObject:any){
+    const headers = new HttpHeaders()
+      .set('Authorization', 'Bearer ' + this.getToken());
+      
+    return this.httpClient.post(this.url + "labour/add",labourObject,{headers});
+  }
  
 
 }

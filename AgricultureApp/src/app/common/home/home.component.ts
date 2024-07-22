@@ -56,7 +56,7 @@ export class HomeComponent {
     if(this.dataStore.latestMandiBhaavList==null || this.dataStore.latestMandiBhaavList.length==0){
       setTimeout(() => {
 
-        this.getLatestMandiRates(favCommoditiesList, this.dataStore.currentLocation);
+        // this.getLatestMandiRates(favCommoditiesList, this.dataStore.currentLocation);
       }, 1000);
     }
 

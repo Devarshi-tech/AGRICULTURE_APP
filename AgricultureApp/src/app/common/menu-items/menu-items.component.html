@@ -4,8 +4,12 @@
     @if ((dataStore.showHeaderFooter)) {
     <div class="container-fluid">
         <a class="navbar-brand" routerLink="">
-            <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo">
+            <img class="logo" src="../../../assets/agri_logo.jpeg" alt="logo"> 
+            
         </a>
+        @if (screenWidth >=600) {
+            <h3 style="color: #198754;">Agriculture App</h3>
+        }
         <input (focus)="dataStore.globalSearchActive=true" class="form-control me-2 searchInputBox" placeholder="Search"
             aria-label="Search" [(ngModel)]="globalSearch">
         @if (dataStore.globalSearchActive && globalSearch!="" ) {
@@ -17,7 +21,11 @@
         <!-- <i class="fas fa-search"></i> -->
         <!-- @if (userSession==null) {} -->
         @if (dataStore.isLoggedIn) {
+        <!-- <span style="color: #198754;"></span> -->
         <button (click)="loggedInUser()" class="ml-1 mr-1 btn btn-outline-success">
+            @if (screenWidth>=600) {
+                {{dataStore.activeUserSession.name==''||dataStore.activeUserSession.name==null?'No name!':dataStore.activeUserSession.name}}
+        }
             <i class="fas fa-user"></i>
         </button>
 
@@ -39,9 +47,18 @@
         <i class=" navbar-brand-for-blank-place"></i>
 
         @for (item of menuItemsList; track $index) {
-        <i [class.navbar-brand]="true" [routerLink]="item.routerLink">
-            {{item.name}}
-        </i>
+            <!--  -->
+        @if ($index==this.dataStore.activeFooterIconNumber) {
+            <i [class.navbar-brand]="true" [routerLink]="item.routerLink" style="background-color: #198754;color: white;padding: 0 5px 0 5px;border-radius: 10px;">
+                {{item.name}}
+            </i>
+        }
+        @else{
+            <i [class.navbar-brand]="true" [routerLink]="item.routerLink">
+                {{item.name}}
+            </i>
+        }
+
 
         }
         <i class=" navbar-brand-for-blank-place"></i>

@@ -60,6 +60,7 @@ export class SignupComponent {
         if (this.datastore.isUserEditFlag) {
 
           this.agrService.setUser(user);
+          this.datastore.activeUserSession = user;
           this.router.navigate(["/"]);
         } else {
           this.datastore.messageAlert = "Welcome! Account Created Successfully.";

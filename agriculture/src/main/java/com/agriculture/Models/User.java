@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-// import java.util.;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-// import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,6 +38,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Labour> labours;
 
+    
     @ManyToOne
     @JoinColumn(name = "roleid", referencedColumnName = "roleid")
     private Role role;
@@ -127,7 +125,9 @@ public class User implements UserDetails {
     }
 
     
-    public User(Long userid, String name, Integer farm, String password, Integer oneTimePassword, List<Labour> labours,
+    public User(Long userid, String name, Integer farm, String password, Integer oneTimePassword
+    , List<Labour> labours
+    ,
             Role role, Boolean isActive, Date createdDate, Date modifiedDate, String contactNumber, String email) {
         this.userid = userid;
         this.name = name;

@@ -1,9 +1,12 @@
 package com.agriculture.Controllers;
 
+import java.util.List;
+
 // import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 // import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +17,8 @@ import com.agriculture.Models.Labour;
 import com.agriculture.Services.LabourService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/labour")
-@CrossOrigin("*s")
 public class LabourController {
 
     @Autowired
@@ -23,13 +26,14 @@ public class LabourController {
 
     @PostMapping("/add")
     public Labour createLabour(@RequestBody Labour labour){
+        
         return labourService.createLabour(labour);
     }
 
-    // @GetMapping("/getAll")
-    // public List<Labour> getAllLaboures(){
+    @GetMapping("/getAll")
+    public List<Labour> getAllLaboures(){
         
-    //     return labourService.getAllLaboures();
-    // }
+        return labourService.getAllLaboures();
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.agriculture.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class LabourService {
 
     public Labour createLabour(Labour labour){
         return labourRepository.save(labour);
+    }
+
+    public List<Labour> getAllLaboures() {
+        return labourRepository.findAll();
     }
 }

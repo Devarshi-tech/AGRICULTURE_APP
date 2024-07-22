@@ -2,8 +2,7 @@ package com.agriculture.Models;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,6 +32,7 @@ public class Labour {
     private String labourName;
     private Integer totalPresents;
     private Integer totalAmountPaid;
+    private Integer dailyRate;
 
     @OneToMany(mappedBy = "labour")
     private List<Attendance> attendances;
@@ -40,9 +40,9 @@ public class Labour {
     @OneToMany(mappedBy = "labour")
     private List<Transaction> transactions;
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
 }

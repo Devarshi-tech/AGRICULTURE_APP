@@ -1,5 +1,7 @@
 package com.agriculture.Services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 // import org.springframework.security.core.userdetails.User;
@@ -22,9 +24,15 @@ public class UserService {
         return new BCryptPasswordEncoder();
     }
 
-    public String createUser(User user,Boolean isUserEditFlag) {
+    public String createUser(User user,Boolean isUserEditFlag,Boolean isPasswordChanged) {
         if(isUserEditFlag){
-            user.setPassword(user.getPassword());
+
+            if(isPasswordChanged){
+                user.setPassword(passwordEncoder().encode(user.getPassword()));                
+            }
+            else{
+                user.setPassword(user.getPassword());
+            }
         }
         else{
             user.setPassword(passwordEncoder().encode(user.getPassword()));
@@ -41,6 +49,12 @@ public class UserService {
     public Boolean uniqueUserValidation(User user){
         User u1  = userRepository.findByContactNumber(user.getContactNumber());
         return u1==null;
+    }
+
+    public List<User> getAllUser() {
+        // TODO Auto-generated method stub
+        // throw new UnsupportedOperationException("Unimplemented method 'getAllUser'");
+        return userRepository.findAll();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.agriculture.Controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,6 +39,15 @@ public class UserController {
     }
 
     /**
+     * Backedn testing without authentication
+     * @return
+     */
+    @GetMapping("/bakcend-test")
+    public String backendTest(){
+        return "backend is running";
+    }
+
+    /**
      * Tesing for normal user1
      */
     @GetMapping("/testing-normal-user1")
@@ -63,8 +73,8 @@ public class UserController {
     }
 
     @PostMapping("/create-user")
-    public String createUser(@RequestBody User user, @RequestHeader("isUserEditFlag") Boolean isUserEditFlag) {
-        return userService.createUser(user, isUserEditFlag);
+    public String createUser(@RequestBody User user, @RequestHeader("isUserEditFlag") Boolean isUserEditFlag,@RequestHeader("isPasswordChanged") Boolean isPasswordChanged) {
+        return userService.createUser(user, isUserEditFlag,isPasswordChanged);
     }
 
     @PostMapping("/unique-user")
@@ -72,5 +82,9 @@ public class UserController {
         return userService.uniqueUserValidation(user);
     }
 
+    @GetMapping("/getAll")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
+    }
 
 }

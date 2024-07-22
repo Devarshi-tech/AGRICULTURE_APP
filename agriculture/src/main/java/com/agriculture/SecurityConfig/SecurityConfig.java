@@ -45,14 +45,15 @@ public class SecurityConfig {
 
                         .requestMatchers("/user/create-user", "/auth/login", "/market/fetchMarketListForDistrict",
                                 "/market/fetchMarketPriceList", "/market/fetchMarketPriceList",
-                                "/user/unique-user","/user/send-otp","/user/verify-otp")
+                                "/user/unique-user","/user/verify-otp","/user/bakcend-test")
                         .permitAll()
                         .requestMatchers("/user/testing-normal-user", "/user/testing-normal-user1", "/user/logged-in-user")
                         .hasRole("NORMAL")
                         .requestMatchers("/user/testing-admin-user", "/user/logged-in-user")
                         .hasRole("ADMIN")
-                        .requestMatchers("/labour/add")
+                        .requestMatchers("/labour/add","/labour/getAll","/user/getAll")
                         .authenticated()
+                        // .permitAll()
                         .anyRequest()
                         .authenticated())
                         
